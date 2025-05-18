@@ -1,9 +1,11 @@
-import React from 'react'
+import DefaultLayout from '../components/layouts/DefaultLayout'
 
 export default function HomePage() {
   return (
-    <div>
-      <h2>Editorial UDB - Home page</h2>
-    </div>
+    <DefaultLayout>
+
+      <h1 className="text-4xl font-bold mb-4">Esta es la Home page</h1>
+      <p className="text-lg">Usando del defaultlayout.</p>
+    </DefaultLayout>
   )
 }
