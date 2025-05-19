@@ -32,10 +32,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center text-lg mb-1 gap-2">
-            <a href="https://www.facebook.com" target="_blank" class="social-icon">
+            <a href="https://www.facebook.com" target="_blank">
               <img className="size-6 transform transition duration-500 hover:scale-110" src="/src/assets/img/facebookAmarillo.png" alt="Facebook Icon" />
             </a>
-            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com" target="_blank">
               <img className="size-6 transform transition duration-500 hover:scale-110" src="/src/assets/img/instagramAmarillo.png" alt="Instagram Icon" />
             </a>
           </div>

@@ -5,7 +5,7 @@ export default function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           {/* <img src="./src/" className="h-8" alt="Flowbite Logo" /> */}
-          <img src="/src/assets/img/Logo_UDB.png" className='h-15' alt="Logo Universidad Don Bosco" />
+          <img src="https://www.udb.edu.sv/editorial/images/nuevo_logo_udb_letra_blanca.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
           <img src="/src/assets/img/Logo_Normal.png" className='h-15' alt="Logo Editorial UDB" />
           {/* <span className="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span> */}
         </a>
