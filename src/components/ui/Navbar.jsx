@@ -1,14 +1,14 @@
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="bg-white relative w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          {/* <img src="./src/" className="h-8" alt="Flowbite Logo" /> */}
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="https://www.udb.edu.sv/editorial/images/nuevo_logo_udb_letra_blanca.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
           <img src="/src/assets/img/Logo_Normal.png" className='h-15' alt="Logo Editorial UDB" />
-          {/* <span className="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span> */}
-        </a>
+        </Link>
+
 
         <div className="flex xl:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -37,17 +37,25 @@ export default function Navbar() {
               <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Colecciones</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Manuales</a>
+              <Link
+                to="/manuales"
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0"
+              >
+                Manuales
+              </Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Textos escolares</a>
+              <Link
+                to="/textos-escolares"
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0"
+              >
+                Textos escolares
+              </Link>
             </li>
             <li>
               <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Contacto</a>
             </li>
-
           </ul>
-
         </div>
       </div>
     </nav>
