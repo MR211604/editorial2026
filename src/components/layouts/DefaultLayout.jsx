@@ -5,7 +5,7 @@ export default function DefaultLayout({ children }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="content-container p-4 mt-16">
+      <main className="container mx-auto flex-grow">
         {children}
       </main>
       <Footer />

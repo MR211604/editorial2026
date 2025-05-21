@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import CustomLink from "./CustomLink";
 
 export default function Navbar() {
+
   return (
     <nav className="bg-white relative w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -8,7 +10,6 @@ export default function Navbar() {
           <img src="https://www.udb.edu.sv/editorial/images/nuevo_logo_udb_letra_blanca.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
           <img src="/src/assets/img/Logo_Normal.png" className='h-15' alt="Logo Editorial UDB" />
         </Link>
-
 
         <div className="flex xl:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -30,31 +31,11 @@ export default function Navbar() {
         </div>
         <div className="items-center justify-between hidden w-full xl:flex xl:w-auto xl:order-1" id="navbar-sticky">
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
-            <li>
-              <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm xl:bg-transparent xl:text-blue-700 xl:p-0" aria-current="page">Revistas</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Colecciones</a>
-            </li>
-            <li>
-              <Link
-                to="/manuales"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0"
-              >
-                Manuales
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/textos-escolares"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0"
-              >
-                Textos escolares
-              </Link>
-            </li>
-            <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700 xl:p-0">Contacto</a>
-            </li>
+            <CustomLink to="/magazines">Revistas</CustomLink>
+            <CustomLink to="/collections">Colecciones</CustomLink>
+            <CustomLink to="/manuales">Manuales</CustomLink>
+            <CustomLink to="/textos-escolares">Textos Escolares</CustomLink>
+            <CustomLink to="/contact">Contacto</CustomLink>
           </ul>
         </div>
       </div>
