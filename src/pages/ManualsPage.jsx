@@ -60,14 +60,14 @@ export default function ManualsPage() {
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 30, // Profundidad suave
-              modifier: 10.05, // Menos superposición
+              depth: 30, 
+              modifier: 10.05, 
               slideShadows: false,
             }}
-            modules={[EffectCoverflow, Autoplay]} // <-- ¡Incluye Autoplay aquí!
+            modules={[EffectCoverflow, Autoplay]} 
             autoplay={{
-              delay: 2500, // 2.5 segundos entre slides (ajusta si quieres)
-              disableOnInteraction: false, // el carrusel sigue después de interactuar
+              delay: 2500, 
+              disableOnInteraction: false,
             }}
             className="superpuestoSwiper"
           >
