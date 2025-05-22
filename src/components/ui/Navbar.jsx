@@ -55,7 +55,7 @@ export default function Navbar() {
         <div className={`items-center justify-between ${isMenuOpen ? 'block' : 'hidden'} w-full xl:flex xl:w-auto xl:order-1`} id="navbar-sticky">
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
             <CustomLink to="/magazines">Revistas</CustomLink>
-            <CustomLink to="/collections">Colecciones</CustomLink>
+            <CustomLink to="/collections">Libros</CustomLink>
             <CustomLink to="/manuales">Manuales</CustomLink>
             <CustomLink to="/textos-escolares">Textos Escolares</CustomLink>
             <CustomLink to="/contact">Contacto</CustomLink>
