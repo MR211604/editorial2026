@@ -9,7 +9,7 @@ export default function CustomLink({ to, children, ...props }) {
   return (
 
     <li {...props}>
-      <Link to={to} className={`${isActive ? 'text-white bg-blue-700 xl:bg-transparent xl:text-blue-700' : 'text-gray-900 hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700'} block py-2 px-3  rounded-sm xl:p-0`}>{children}</Link>
+      <Link to={to} className={`${isActive ? 'text-white bg-blue-700 xl:bg-transparent xl:text-blue-700' : 'text-gray-900 hover:bg-gray-100 xl:hover:bg-transparent xl:hover:text-blue-700'} font-bold block py-2 px-3  rounded-sm xl:p-0`}>{children}</Link>
     </li>
 
   )
