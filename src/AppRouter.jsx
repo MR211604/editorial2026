@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import BooksPage from "./pages/BooksPage";
 import ManualsPage from "./pages/ManualsPage";
 import SchoolTextsPage from "./pages/SchoolTextsPage";
 import ContactPage from "./pages/ContactPage";
@@ -14,7 +15,7 @@ export default function AppRouter() {
       <Route path="/manuales" element={<ManualsPage />} />
       <Route path="/textos-escolares" element={<SchoolTextsPage />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/collections" element={<HomePage />} />
+      <Route path="/collections" element={<BooksPage />} />
     </Routes>
   );
 }

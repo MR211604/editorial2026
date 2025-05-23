@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import Button from '../components/ui/Button';
 
+
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
   "Aca va texto 2",
