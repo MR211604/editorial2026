@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import Button from "../components/ui/Button";
 
 
 const rows = [
@@ -111,9 +112,9 @@ function SchoolTextsPage() {
                     <div className="w-full px-2">
                       <h2 className="font-bold text-blue-900 mb-2 text-lg">{manual.title}</h2>
                       <p className="text-sm text-gray-700 mb-4">{manual.desc}</p>
-                      <button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 font-semibold py-2 px-5 rounded-full transition">
+                      <Button className={"py-2 px-5 rounded-full transition text-md text-blue-900 font-semibold"}>
                         Ver detalle
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </SwiperSlide>

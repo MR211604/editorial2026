@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import Button from "../components/ui/Button";
 
 const rows = [
   [
@@ -14,7 +15,7 @@ const rows = [
     { title: "Manual 4", desc: "Descripción del manual 4", img: "./src/assets/img/Algebra-vectorial.jpg", },
     { title: "Manual 5", desc: "Descripción del manual 5", img: "./src/assets/img/Algebra-lineal.png", },
   ],
-   [
+  [
     { title: "Manual 6", desc: "Descripción del manual 6", img: "./src/assets/img/Algebra-lineal.png", },
     { title: "Manual 7", desc: "Descripción del manual 7", img: "./src/assets/img/Algebra-vectorial.jpg", },
     { title: "Manual 8", desc: "Descripción del manual 8", img: "./src/assets/img/Calculo-diferencial-2024.jpg", },
@@ -60,13 +61,13 @@ export default function ManualsPage() {
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 30, 
-              modifier: 10.05, 
+              depth: 30,
+              modifier: 10.05,
               slideShadows: false,
             }}
-            modules={[EffectCoverflow, Autoplay]} 
+            modules={[EffectCoverflow, Autoplay]}
             autoplay={{
-              delay: 2500, 
+              delay: 2500,
               disableOnInteraction: false,
             }}
             className="superpuestoSwiper"
@@ -84,7 +85,7 @@ export default function ManualsPage() {
         </div>
       </div>
 
-         <h1 className="text-3xl font-bold text-center text-blue-800 mb-10 mt-8">
+      <h1 className="text-3xl font-bold text-center text-blue-800 mb-10 mt-8">
         Manuales
       </h1>
 
@@ -109,9 +110,9 @@ export default function ManualsPage() {
                     <div className="w-full px-2">
                       <h2 className="font-bold text-blue-900 mb-2 text-lg">{manual.title}</h2>
                       <p className="text-sm text-gray-700 mb-4">{manual.desc}</p>
-                      <button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 font-semibold py-2 px-5 rounded-full transition">
+                      <Button className={"py-2 px-5 rounded-full transition text-md text-blue-900 font-semibold"}>
                         Ver detalle
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </SwiperSlide>
