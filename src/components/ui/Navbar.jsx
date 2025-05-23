@@ -24,7 +24,7 @@ export default function Navbar() {
     <nav className="bg-white relative w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://www.udb.edu.sv/editorial/images/nuevo_logo_udb_letra_blanca.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
+          <img src="https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/1/core_admin/logo/0x200/1736809456/LogoUDB.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
           <img src="/src/assets/img/Logo_Normal.png" className='h-15' alt="Logo Editorial UDB" />
         </Link>
 
