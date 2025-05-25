@@ -6,13 +6,12 @@ import ManualsPage from "./pages/ManualsPage";
 import SchoolTextsPage from "./pages/SchoolTextsPage";
 import ContactPage from "./pages/ContactPage";
 import MagazinePage from "./pages/MagazinePage";
-import MagazineAbout from "./components/ui/magazines/MagazineAbout";
-import MagazineEditorialPolicy from "./components/ui/magazines/MagazineEditorialPolicy";
-import MagazineArchive from "./components/ui/magazines/MagazineArchive";
-import MagazineAcceptanceProcess from "./components/ui/magazines/MagazineAcceptanceProcess";
-import MagazinePublicationStandards from "./components/ui/magazines/MagazinePublicationStandards";
-import MagazineEditorialBoard from "./components/ui/magazines/MagazineEditorialBoard";
-
+import MagazineAbout from "./pages/magazines/MagazineAbout";
+import MagazineEditorialPolicy from "./pages/magazines/MagazineEditorialPolicy";
+import MagazineArchive from "./pages/magazines/MagazineArchive";
+import MagazineAcceptanceProcess from "./pages/magazines/MagazineAcceptanceProcess";
+import MagazinePublicationStandards from "./pages/magazines/MagazinePublicationStandards";
+import MagazineEditorialBoard from "./pages/magazines/MagazineEditorialBoard";
 
 export default function AppRouter() {
   return (

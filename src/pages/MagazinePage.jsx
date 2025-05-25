@@ -16,8 +16,7 @@ export default function MagazinePage() {
   return (
     <DefaultLayout>
       <MagazineHeader />
- {/* Aquí se renderiza la sección seleccionada */}
-      <div className="mx-10 my-8">
+      <div className="mx-5 my-8">
         <Outlet />
       </div>
 

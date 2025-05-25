@@ -11,15 +11,13 @@ export default function MagazineArchive() {
         Archivo
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-14 w-full mb-16 px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 w-full mb-16 px-4">
         {books.map((book, idx) => (
           <div
             key={idx}
             className="flex items-start bg-white rounded-lg shadow-md p-4"
           >
-            {/* Imagen a la izquierda */}
-            <div className="bg-blue-300 w-32 h-48 rounded-md shadow mr-4 flex-shrink-0" />
-            {/* Texto a la derecha */}
+            <div className="bg-blue-300 w-32 h-48 rounded-md shadow mr-4 flex-shrink-0" />            
             <div className="flex flex-col justify-between h-full">
               <div>
                 <h2 className="font-bold text-blue-900 mb-2 text-lg">{book.title}</h2>

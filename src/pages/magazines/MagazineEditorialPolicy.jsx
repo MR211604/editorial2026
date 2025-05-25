@@ -1,3 +1,5 @@
+import MagazinePartners from "../../components/ui/magazines/MagazinePartners";
+
 export default function MagazineEditorialPolicy() {
   return (
     <div className="max-w-3xl mx-auto pt-8 pb-4 flex flex-col items-center">
@@ -81,43 +83,7 @@ export default function MagazineEditorialPolicy() {
       </p>
 
       {/* Logos de publicaciones y revistas */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6 my-8">
-        <div className="flex flex-col items-center">
-          <span className="font-semibold text-xs md:text-sm mb-2">
-            Publicado en:
-          </span>
-          <img
-            src="/ruta-logo-ejemplo-1.png"
-            alt="EBSCOhost"
-            className="h-6 mb-2"
-          />
-        </div>
-        <div className="flex flex-col items-center">
-          <span className="font-semibold text-xs md:text-sm mb-2">
-            Revistas Concesionadas:
-          </span>
-          <img
-            src="/ruta-logo-ejemplo-2.png"
-            alt="Retos"
-            className="h-6 mb-2"
-          />
-          <img
-            src="/ruta-logo-ejemplo-3.png"
-            alt="CAMJOL"
-            className="h-6 mb-2"
-          />
-        </div>
-        <div className="flex flex-col items-center">
-          <span className="font-semibold text-xs md:text-sm mb-2">
-            Indexada en:
-          </span>
-          <img
-            src="/ruta-logo-ejemplo-4.png"
-            alt="Latindex"
-            className="h-6 mb-2"
-          />
-        </div>
-      </div>
+      <MagazinePartners />
     </div>
   );
 }
