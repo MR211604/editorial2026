@@ -1,3 +1,5 @@
+import Button from "../../components/ui/Button";
+
 export default function MagazineArchive() {
   // Simulación de libros/archivos
   const books = Array(9).fill({
@@ -23,9 +25,9 @@ export default function MagazineArchive() {
                 <h2 className="font-bold text-blue-900 mb-2 text-lg">{book.title}</h2>
                 <p className="text-sm text-gray-700 mb-6">{book.description}</p>
               </div>
-              <button className="bg-yellow-300 hover:bg-yellow-400 text-blue-900 font-semibold py-2 px-5 rounded-full transition text-sm w-max">
+              <Button className="text-blue-900 font-semibold py-2 px-5 rounded-full text-sm w-max">
                 Ver detalle
-              </button>
+              </Button>
             </div>
           </div>
         ))}
