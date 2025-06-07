@@ -27,7 +27,7 @@ export default function ContactPage() {
               <label htmlFor="message" className='block text-sm font-bold text-gray-700'>Mensaje</label>
               <textarea id="message" rows="4" className='mt-1 block w-full p-2 border border-gray-300 rounded-md' required></textarea>
             </div>
-            <Button type='submit' className='pt-2 px-5 rounded-full'>
+            <Button type='submit' className='py-2 px-5 rounded-full transition text-md text-blue-900 font-semibold'>
               Enviar
             </Button>
           </form>
@@ -35,7 +35,7 @@ export default function ContactPage() {
 
         {/* image section */}
         <section className='flex flex-row items-center align-center justify-center'>
-          <img src="/src/assets/img/contact_photo.webp" alt="Contáctanos" className='w-auto h-150 object-fit' />
+          <img src="/src/assets/img/contact_photo.webp" alt="Contáctanos" className='w-auto h-auto lg:h-150 object-fit' />
         </section>
 
       </main>

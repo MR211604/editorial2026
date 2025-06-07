@@ -16,7 +16,7 @@ const rows = [
     { title: "Escolar 4", desc: "Descripción del Escolar 4", img: "./src/assets/img/Poemas.png", },
     { title: "Escolar 5", desc: "Descripción del Escolar 5", img: "./src/assets/img/Remembranzas-de-mi-tierra.jpg", },
   ],
-   [
+  [
     { title: "Escolar 6", desc: "Descripción del Escolar 6", img: "./src/assets/img/Teologia en Abya Yala.png", },
     { title: "Escolar 7", desc: "Descripción del Escolar 7", img: "./src/assets/img/Testigos de la fe.png", },
     { title: "Escolar 8", desc: "Descripción del Escolar 8", img: "./src/assets/img/Sendas-feministas.jpg", },
@@ -39,7 +39,7 @@ const carouselImages =
 function SchoolTextsPage() {
   return (
     <DefaultLayout>
-      
+
       {/* HERO: Texto + Carrusel */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-18 mb-18 max-w-5xl mx-auto">
         {/* Texto principal */}
@@ -63,14 +63,14 @@ function SchoolTextsPage() {
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 30, 
-              modifier: 10.05, 
+              depth: 30,
+              modifier: 10.05,
               slideShadows: false,
             }}
-            modules={[EffectCoverflow, Autoplay]} 
+            modules={[EffectCoverflow, Autoplay]}
             autoplay={{
-              delay: 2500, 
-              disableOnInteraction: false, 
+              delay: 2500,
+              disableOnInteraction: false,
             }}
             className="superpuestoSwiper"
           >
@@ -87,7 +87,7 @@ function SchoolTextsPage() {
         </div>
       </div>
 
-       <h1 className="text-3xl font-bold text-center text-blue-800 mb-10 mt-8">
+      <h1 className="text-3xl font-bold text-center text-blue-800 mb-10 mt-8">
         Textos Escolares
       </h1>
 
@@ -95,7 +95,17 @@ function SchoolTextsPage() {
         {rows.map((manuals, rowIdx) => (
           <div key={rowIdx} className="w-full max-w-5xl">
             <Swiper
-              slidesPerView={3}
+              slidesPerView={1}
+              breakpoints={
+                {
+                  768: {
+                    slidesPerView: 3
+                  },
+                  540: {
+                    slidesPerView: 2
+                  }
+                }
+              }
               spaceBetween={40}
               navigation={true}
               modules={[Navigation]}

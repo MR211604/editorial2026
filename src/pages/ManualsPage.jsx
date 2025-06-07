@@ -93,7 +93,17 @@ export default function ManualsPage() {
         {rows.map((manuals, rowIdx) => (
           <div key={rowIdx} className="w-full max-w-5xl">
             <Swiper
-              slidesPerView={3}
+              slidesPerView={1}
+              breakpoints={
+                {
+                  768: {
+                    slidesPerView: 3
+                  },
+                  540: {
+                    slidesPerView: 2
+                  }
+                }
+              }
               spaceBetween={40}
               navigation={true}
               modules={[Navigation]}
