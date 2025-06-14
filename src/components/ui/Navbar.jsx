@@ -81,8 +81,15 @@ export default function Navbar() {
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
             <li 
               className="relative group"
-              onMouseEnter={() => setIsMagazinesHovered(true)}
-              onMouseLeave={() => setIsMagazinesHovered(false)}
+              onMouseEnter={() => {
+                clearTimeout(window.hideSubmenuTimeout);
+                setIsMagazinesHovered(true);
+              }}
+              onMouseLeave={() => {
+                window.hideSubmenuTimeout = setTimeout(() => {
+                  setIsMagazinesHovered(false);
+                }, 200);
+              }}
             >
               <div className="flex items-center">
                 <div className="relative">
@@ -123,8 +130,15 @@ export default function Navbar() {
               <div 
                 ref={submenuRef}
                 className={`hidden xl:block absolute left-0 mt-2 w-56 bg-blue-50 rounded-lg shadow-lg z-30 transition-all duration-200 origin-top border border-blue-300 ${isMagazinesHovered ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'}`}
-                onMouseEnter={() => setIsMagazinesHovered(true)}
-                onMouseLeave={() => setIsMagazinesHovered(false)}
+                onMouseEnter={() => {
+                  clearTimeout(window.hideSubmenuTimeout);
+                  setIsMagazinesHovered(true);
+                }}
+                onMouseLeave={() => {
+                  window.hideSubmenuTimeout = setTimeout(() => {
+                    setIsMagazinesHovered(false);
+                  }, 200);
+                }}
               >
                 <div className="py-2 space-y-1">
                   {[
