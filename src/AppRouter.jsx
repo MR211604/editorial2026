@@ -1,35 +1,58 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import BooksPage from "./pages/BooksPage";
-import ManualsPage from "./pages/ManualsPage";
+import { Routes, Route } from "react-router-dom";
+
+/* Páginas generales */
+import HomePage        from "./pages/HomePage";
+import BooksPage       from "./pages/BooksPage";
+import ManualsPage     from "./pages/ManualsPage";
 import SchoolTextsPage from "./pages/SchoolTextsPage";
-import ContactPage from "./pages/ContactPage";
-import MagazinePage from "./pages/MagazinePage";
-import MagazineAbout from "./pages/magazines/MagazineAbout";
-import MagazineEditorialPolicy from "./pages/magazines/MagazineEditorialPolicy";
-import MagazineArchive from "./pages/magazines/MagazineArchive";
-import MagazineAcceptanceProcess from "./pages/magazines/MagazineAcceptanceProcess";
-import MagazinePublicationStandards from "./pages/magazines/MagazinePublicationStandards";
-import MagazineEditorialBoard from "./pages/magazines/MagazineEditorialBoard";
+import ContactPage     from "./pages/ContactPage";
+import MagazinePage    from "./pages/MagazinePage";        // landing con todas las revistas
+
+/* ——— TEORÍA Y PRAXIS (layout + secciones) ——— */
+import TP_Layout                from "./pages/magazines/teoria-y-praxis/Layout";
+import TP_EditorialPolicy       from "./pages/magazines/teoria-y-praxis/MagazineEditorialPolicy";
+import TP_About                 from "./pages/magazines/teoria-y-praxis/MagazineAbout";
+import TP_Archive               from "./pages/magazines/teoria-y-praxis/MagazineArchive";
+import TP_AcceptanceProcess     from "./pages/magazines/teoria-y-praxis/MagazineAcceptanceProcess";
+import TP_PublicationStandards  from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
+import TP_EditorialBoard        from "./pages/magazines/teoria-y-praxis/MagazineEditorialBoard";
+
+/* ——— REVISTAS “EN CONSTRUCCIÓN” ——— */
+import CientificaIndex  from "./pages/magazines/cientifica/index";
+import DiaLogosIndex    from "./pages/magazines/dia-logos/index";
+import IngNovacionIndex from "./pages/magazines/ing-novacion/index";
 
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/magazines" element={<MagazinePage />}>
-        <Route index element={<MagazineEditorialPolicy />} />
-        <Route path="about" element={<MagazineAbout />} />
-        <Route path="editorial-policy" element={<MagazineEditorialPolicy />} />
-        <Route path="archive" element={<MagazineArchive />} />
-        <Route path="acceptance-process" element={<MagazineAcceptanceProcess />} />
-        <Route path="publication-standards" element={<MagazinePublicationStandards />} />
-        <Route path="editorial-board" element={<MagazineEditorialBoard />} />
-      </Route>
-      <Route path="/manuales" element={<ManualsPage />} />
+      {/* Sitio general */}
+      <Route path="/"                 element={<HomePage />} />
+      <Route path="/collections"      element={<BooksPage />} />
+      <Route path="/manuales"         element={<ManualsPage />} />
       <Route path="/textos-escolares" element={<SchoolTextsPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/collections" element={<BooksPage />} />
+      <Route path="/contact"          element={<ContactPage />} />
+
+      {/* Landing con todas las revistas */}
+      <Route path="/revistas" element={<MagazinePage />} />
+
+      {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
+      <Route path="/revistas/teoria-y-praxis" element={<TP_Layout />}>
+        <Route index                         element={<TP_EditorialPolicy />} />
+        <Route path="about"                  element={<TP_About />} />
+        <Route path="editorial-policy"       element={<TP_EditorialPolicy />} />
+        <Route path="archive"                element={<TP_Archive />} />
+        <Route path="acceptance-process"     element={<TP_AcceptanceProcess />} />
+        <Route path="publication-standards"  element={<TP_PublicationStandards />} />
+        <Route path="editorial-board"        element={<TP_EditorialBoard />} />
+      </Route>
+
+      {/* ——— Otras revistas (placeholder) ——— */}
+      <Route path="/revistas/cientifica"   element={<CientificaIndex />} />
+      <Route path="/revistas/dia-logos"    element={<DiaLogosIndex />} />
+      <Route path="/revistas/ing-novacion" element={<IngNovacionIndex />} />
+
+      {/* 404 opcional */}
+      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
 }

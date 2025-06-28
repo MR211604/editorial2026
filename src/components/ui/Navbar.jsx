@@ -9,151 +9,202 @@ export default function Navbar() {
   const submenuRef = useRef(null);
   const linkRef = useRef(null);
 
+  /* ——— helpers ——— */
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    if (!isMenuOpen) {
-      setIsMobileSubmenuOpen(false);
-    }
+    if (!isMenuOpen) setIsMobileSubmenuOpen(false);
   };
+  const toggleMobileSubmenu = () => setIsMobileSubmenuOpen(!isMobileSubmenuOpen);
 
-  const toggleMobileSubmenu = () => {
-    setIsMobileSubmenuOpen(!isMobileSubmenuOpen);
-  };
-
+  /* Cerrar menú al cambiar de ruta */
   useEffect(() => {
     const handleRouteChange = () => {
       setIsMenuOpen(false);
       setIsMobileSubmenuOpen(false);
     };
-    window.addEventListener('popstate', handleRouteChange);
-    return () => {
-      window.removeEventListener('popstate', handleRouteChange);
-    };
+    window.addEventListener("popstate", handleRouteChange);
+    return () => window.removeEventListener("popstate", handleRouteChange);
   }, []);
 
+  /* Cerrar submenú desktop al hacer clic fuera */
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (submenuRef.current && !submenuRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (submenuRef.current && !submenuRef.current.contains(e.target)) {
         setIsMagazinesHovered(false);
       }
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <nav className="bg-white relative w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        {/* logo */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/1/core_admin/logo/0x200/1736809456/LogoUDB.png" className="h-20" alt="Editorial Oficial UDB" title="Editorial Oficial UDB" />
-          <img src="/src/assets/img/Logo_Normal.png" className='h-15' alt="Logo Editorial UDB" />
+          <img
+            src="https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/1/core_admin/logo/0x200/1736809456/LogoUDB.png"
+            className="h-20"
+            alt="Editorial Oficial UDB"
+            title="Editorial Oficial UDB"
+          />
+          <img
+            src="/src/assets/img/Logo_Normal.png"
+            className="h-15"
+            alt="Logo Editorial UDB"
+          />
         </Link>
 
+        {/* buscador + hamburguesa */}
         <div className="flex xl:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
           <div className="relative md:mr-12 hidden md:block">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg className="w-4 h-4 cursor-pointer text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+              <svg
+                className="w-4 h-4 text-gray-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
               </svg>
             </div>
-            <input type="search" id="default-search" className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " placeholder="¿Qué estás buscando?" required />
+            <input
+              type="search"
+              id="default-search"
+              placeholder="¿Qué estás buscando?"
+              className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+            />
           </div>
 
+          {/* botón hamburguesa */}
           <button
             onClick={toggleMenu}
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 cursor-pointer"
-            aria-controls="navbar-sticky"
-            aria-expanded={isMenuOpen}
+            className="inline-flex items-center p-2 w-10 h-10 xl:hidden text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-2 focus:ring-gray-200"
           >
-            <span className="sr-only">Open main menu</span>
-            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+            <svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
             </svg>
           </button>
         </div>
 
-        <div className={`items-center justify-between ${isMenuOpen ? 'block' : 'hidden'} w-full xl:flex xl:w-auto xl:order-1`} id="navbar-sticky">
+        {/* menú principal */}
+        <div
+          id="navbar-sticky"
+          className={`items-center justify-between ${
+            isMenuOpen ? "block" : "hidden"
+          } w-full xl:flex xl:w-auto xl:order-1`}
+        >
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
-            <li 
+            {/* ——— REVISTAS ——— */}
+            <li
               className="relative group"
               onMouseEnter={() => {
                 clearTimeout(window.hideSubmenuTimeout);
                 setIsMagazinesHovered(true);
               }}
               onMouseLeave={() => {
-                window.hideSubmenuTimeout = setTimeout(() => {
-                  setIsMagazinesHovered(false);
-                }, 200);
+                window.hideSubmenuTimeout = setTimeout(
+                  () => setIsMagazinesHovered(false),
+                  200
+                );
               }}
             >
               <div className="flex items-center">
-                <div className="relative">
-                  <CustomLink 
-                    to="/magazines" 
-                    className="hover:text-blue-600"
-                    ref={linkRef}
-                  >
-                    Revistas
-                  </CustomLink>
-                </div>
-                <button 
+                {/* TEXTO SIN ENLACE */}
+                <span
+                  ref={linkRef}
+                  className="cursor-default font-bold text-gray-700 hover:text-blue-600 select-none"
+                >
+                  Revistas
+                </span>
+
+                {/* flecha – mobile */}
+                <button
                   onClick={toggleMobileSubmenu}
                   className="xl:hidden ml-1 focus:outline-none"
                 >
-                  <svg 
-                    className={`w-4 h-4 transition-transform duration-200 ${isMobileSubmenuOpen ? 'text-blue-600 rotate-180' : 'text-gray-500'}`}
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isMobileSubmenuOpen
+                        ? "text-blue-600 rotate-180"
+                        : "text-gray-500"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
-                <svg 
-                  className={`hidden xl:block w-4 h-4 ml-1 transition-transform duration-200 ${isMagazinesHovered ? 'text-blue-600 rotate-180' : 'text-gray-500'}`}
-                  fill="none" 
-                  stroke="currentColor" 
+
+                {/* flecha – desktop */}
+                <svg
+                  className={`hidden xl:block w-4 h-4 ml-1 transition-transform duration-200 ${
+                    isMagazinesHovered
+                      ? "text-blue-600 rotate-180"
+                      : "text-gray-500"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </div>
 
               {/* Submenú Desktop */}
-              <div 
+              <div
                 ref={submenuRef}
-                className={`hidden xl:block absolute left-0 mt-2 w-56 bg-blue-50 rounded-lg shadow-lg z-30 transition-all duration-200 origin-top border border-blue-300 ${isMagazinesHovered ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'}`}
-                onMouseEnter={() => {
-                  clearTimeout(window.hideSubmenuTimeout);
-                  setIsMagazinesHovered(true);
-                }}
-                onMouseLeave={() => {
-                  window.hideSubmenuTimeout = setTimeout(() => {
-                    setIsMagazinesHovered(false);
-                  }, 200);
-                }}
+                className={`hidden xl:block absolute left-0 mt-2 w-56 bg-blue-50 rounded-lg shadow-lg z-30 border border-blue-300 origin-top transition-all duration-200 ${
+                  isMagazinesHovered
+                    ? "opacity-100 scale-y-100"
+                    : "opacity-0 scale-y-95 pointer-events-none"
+                }`}
               >
                 <div className="py-2 space-y-1">
                   {[
-                    { to: "/revistas/teoria-y-praxis", label: "Teoría y praxis" },
+                    {
+                      to: "/revistas/teoria-y-praxis",
+                      label: "Teoría y praxis",
+                    },
                     { to: "/revistas/cientifica", label: "Científica" },
                     { to: "/revistas/dia-logos", label: "Diá-logos" },
                     { to: "/revistas/ing-novacion", label: "Ing-novación" },
                   ].map(({ to, label }) => (
-                    <Link 
+                    <Link
                       key={to}
-                      to={to} 
+                      to={to}
                       className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 transition-colors duration-150"
                       onClick={() => setIsMagazinesHovered(false)}
                     >
-                      <span className="w-2 h-2 mr-2 bg-blue-600 rounded-full"></span>
+                      <span className="w-2 h-2 mr-2 bg-blue-600 rounded-full" />
                       {label}
                     </Link>
                   ))}
@@ -161,28 +212,31 @@ export default function Navbar() {
               </div>
 
               {/* Submenú Mobile */}
-              {(isMenuOpen && isMobileSubmenuOpen) && (
+              {isMenuOpen && isMobileSubmenuOpen && (
                 <div className="xl:hidden pl-6 mt-2 space-y-2 border-l-2 border-blue-300 bg-blue-50 rounded-md py-2">
-                  <Link 
-                    to="/magazines"
-                    className="flex items-center text-sm text-gray-700 font-bold hover:bg-blue-100 rounded-md px-2 py-1"
+                  <Link
+                    to="/revistas"
+                    className="flex items-center text-sm font-bold text-gray-700 hover:bg-blue-100 rounded-md px-2 py-1"
                     onClick={toggleMenu}
                   >
                     Todas las Revistas
                   </Link>
                   {[
-                    { to: "/revistas/teoria-y-praxis", label: "Teoría y praxis" },
+                    {
+                      to: "/revistas/teoria-y-praxis",
+                      label: "Teoría y praxis",
+                    },
                     { to: "/revistas/cientifica", label: "Científica" },
                     { to: "/revistas/dia-logos", label: "Diá-logos" },
                     { to: "/revistas/ing-novacion", label: "Ing-novación" },
                   ].map(({ to, label }) => (
-                    <Link 
+                    <Link
                       key={to}
                       to={to}
                       className="flex items-center text-sm text-gray-700 hover:bg-blue-100 rounded-md px-2 py-1"
                       onClick={toggleMenu}
                     >
-                      <span className="w-1.5 h-1.5 mr-2 bg-blue-600 rounded-full"></span>
+                      <span className="w-1.5 h-1.5 mr-2 bg-blue-600 rounded-full" />
                       {label}
                     </Link>
                   ))}
@@ -190,22 +244,40 @@ export default function Navbar() {
               )}
             </li>
 
+            {/* otros enlaces principales */}
             <CustomLink to="/collections">Libros</CustomLink>
             <CustomLink to="/manuales">Manuales</CustomLink>
             <CustomLink to="/textos-escolares">Textos Escolares</CustomLink>
             <CustomLink to="/contact">Contacto</CustomLink>
 
+            {/* buscador móvil */}
             <div className="relative mt-2 md:hidden">
               <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg className="w-4 h-4 cursor-pointer text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                <svg
+                  className="w-4 h-4 text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
                 </svg>
               </div>
-              <input type="search" id="default-search" className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="¿Qué estás buscando?" required />
+              <input
+                type="search"
+                id="default-search-mobile"
+                placeholder="¿Qué estás buscando?"
+                className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
           </ul>
         </div>
       </div>
     </nav>
-  )
+  );
 }
