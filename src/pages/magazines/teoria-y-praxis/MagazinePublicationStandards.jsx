@@ -1,4 +1,4 @@
-import MagazinePartners from "../../components/ui/magazines/MagazinePartners";
+import MagazinePartners from "../../../components/ui/magazines/MagazinePartners";
 
 export default function MagazinePublicationStandards() {
   return (
