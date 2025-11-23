@@ -1,11 +1,12 @@
 /*  src/pages/magazines/cientifica/index.jsx  */
-import DefaultLayout      from "../../../components/layouts/DefaultLayout";
-import { Chrono }         from "react-chrono";
-import { useState }       from "react";
+import DefaultLayout from "../../../components/layouts/DefaultLayout";
+import { Chrono } from "react-chrono";
+import { useState } from "react";
 
 /* ——— Datos de prueba ———
    Cada objeto puede tener:
    • title        → fecha corta
+   • url          → (enlace opcional)
    • cardTitle    → título grande
    • cardSubtitle → subtítulo
    • cardDetailedText → párrafo
@@ -14,6 +15,7 @@ import { useState }       from "react";
 const mockItems = [
   {
     title: "2005",
+    url: "https://cientifica.universidad.edu.pe",
     cardTitle: "Vol. 1, Nº 1",
     cardSubtitle: "Lanzamiento inaugural",
     cardDetailedText:
@@ -72,6 +74,7 @@ export default function CientificaIndex() {
           {items.length ? (
             <Chrono
               items={items}
+              // parseDetailsAsHTML={true}
               mode="VERTICAL_ALTERNATING"
               disableToolbar
               slideShow={false}

@@ -14,7 +14,8 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) setIsMobileSubmenuOpen(false);
   };
-  const toggleMobileSubmenu = () => setIsMobileSubmenuOpen(!isMobileSubmenuOpen);
+  const toggleMobileSubmenu = () =>
+    setIsMobileSubmenuOpen(!isMobileSubmenuOpen);
 
   /* Cerrar menú al cambiar de ruta */
   useEffect(() => {
@@ -41,7 +42,10 @@ export default function Navbar() {
     <nav className="bg-white relative w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* logo */}
-        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link
+          to="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
           <img
             src="https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/1/core_admin/logo/0x200/1736809456/LogoUDB.png"
             className="h-20"
@@ -246,8 +250,8 @@ export default function Navbar() {
 
             {/* otros enlaces principales */}
             <CustomLink to="/collections">Libros</CustomLink>
-            <CustomLink to="/manuales">Manuales</CustomLink>
-            <CustomLink to="/textos-escolares">Textos Escolares</CustomLink>
+            {/* <CustomLink to="/manuales">Manuales</CustomLink> */}
+            {/* <CustomLink to="/textos-escolares">Textos Escolares</CustomLink> */}
             <CustomLink to="/contact">Contacto</CustomLink>
 
             {/* buscador móvil */}
