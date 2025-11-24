@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CustomLink from "./CustomLink";
+import SearchInput from "./SearchInput";
 import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
@@ -16,6 +17,10 @@ export default function Navbar() {
   };
   const toggleMobileSubmenu = () =>
     setIsMobileSubmenuOpen(!isMobileSubmenuOpen);
+
+  const handleSearchComplete = () => {
+    setIsMenuOpen(false);
+  };
 
   /* Cerrar menú al cambiar de ruta */
   useEffect(() => {
@@ -47,7 +52,7 @@ export default function Navbar() {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/1/core_admin/logo/0x200/1736809456/LogoUDB.png"
+            src="/src/assets/img/logoUDB.png"
             className="h-20"
             alt="Editorial Oficial UDB"
             title="Editorial Oficial UDB"
@@ -61,29 +66,31 @@ export default function Navbar() {
 
         {/* buscador + hamburguesa */}
         <div className="flex xl:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <div className="relative md:mr-12 hidden md:block">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-gray-500"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
+          <div className="md:mr-12 hidden md:block">
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <SearchInput
+                id="default-search-mobile"
+                placeholder="¿Qué estás buscando?"
+                onSearch={handleSearchComplete}
+                className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+              />
             </div>
-            <input
-              type="search"
-              id="default-search"
-              placeholder="¿Qué estás buscando?"
-              className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
-            />
           </div>
 
           {/* botón hamburguesa */}
@@ -111,9 +118,8 @@ export default function Navbar() {
         {/* menú principal */}
         <div
           id="navbar-sticky"
-          className={`items-center justify-between ${
-            isMenuOpen ? "block" : "hidden"
-          } w-full xl:flex xl:w-auto xl:order-1`}
+          className={`items-center justify-between ${isMenuOpen ? "block" : "hidden"
+            } w-full xl:flex xl:w-auto xl:order-1`}
         >
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
             {/* ——— REVISTAS ——— */}
@@ -145,11 +151,10 @@ export default function Navbar() {
                   className="xl:hidden ml-1 focus:outline-none"
                 >
                   <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isMobileSubmenuOpen
-                        ? "text-blue-600 rotate-180"
-                        : "text-gray-500"
-                    }`}
+                    className={`w-4 h-4 transition-transform duration-200 ${isMobileSubmenuOpen
+                      ? "text-blue-600 rotate-180"
+                      : "text-gray-500"
+                      }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -165,11 +170,10 @@ export default function Navbar() {
 
                 {/* flecha – desktop */}
                 <svg
-                  className={`hidden xl:block w-4 h-4 ml-1 transition-transform duration-200 ${
-                    isMagazinesHovered
-                      ? "text-blue-600 rotate-180"
-                      : "text-gray-500"
-                  }`}
+                  className={`hidden xl:block w-4 h-4 ml-1 transition-transform duration-200 ${isMagazinesHovered
+                    ? "text-blue-600 rotate-180"
+                    : "text-gray-500"
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -186,11 +190,10 @@ export default function Navbar() {
               {/* Submenú Desktop */}
               <div
                 ref={submenuRef}
-                className={`hidden xl:block absolute left-0 mt-2 w-56 bg-blue-50 rounded-lg shadow-lg z-30 border border-blue-300 origin-top transition-all duration-200 ${
-                  isMagazinesHovered
-                    ? "opacity-100 scale-y-100"
-                    : "opacity-0 scale-y-95 pointer-events-none"
-                }`}
+                className={`hidden xl:block absolute left-0 mt-2 w-56 bg-blue-50 rounded-lg shadow-lg z-30 border border-blue-300 origin-top transition-all duration-200 ${isMagazinesHovered
+                  ? "opacity-100 scale-y-100"
+                  : "opacity-0 scale-y-95 pointer-events-none"
+                  }`}
               >
                 <div className="py-2 space-y-1">
                   {[
@@ -255,29 +258,31 @@ export default function Navbar() {
             <CustomLink to="/contact">Contacto</CustomLink>
 
             {/* buscador móvil */}
-            <div className="relative mt-2 md:hidden">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg
-                  className="w-4 h-4 text-gray-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
+            <div className="mt-2 md:hidden">
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <SearchInput
+                  id="navbar-search"
+                  placeholder="¿Qué estás buscando?"
+                  onSearch={handleSearchComplete}
+                  className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                />
               </div>
-              <input
-                type="search"
-                id="default-search-mobile"
-                placeholder="¿Qué estás buscando?"
-                className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-              />
             </div>
           </ul>
         </div>

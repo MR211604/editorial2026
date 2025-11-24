@@ -7,6 +7,7 @@ import ManualsPage     from "./pages/ManualsPage";
 import SchoolTextsPage from "./pages/SchoolTextsPage";
 import ContactPage     from "./pages/ContactPage";
 import MagazinePage    from "./pages/MagazinePage";        // landing con todas las revistas
+import SearchResultsPage from "./pages/SearchResultsPage";  // página de resultados de búsqueda
 
 /* ——— TEORÍA Y PRAXIS (layout + secciones) ——— */
 import TP_Layout                from "./pages/magazines/teoria-y-praxis/Layout";
@@ -31,6 +32,7 @@ export default function AppRouter() {
       <Route path="/manuales"         element={<ManualsPage />} />
       <Route path="/textos-escolares" element={<SchoolTextsPage />} />
       <Route path="/contact"          element={<ContactPage />} />
+      <Route path="/results"          element={<SearchResultsPage />} />
 
       {/* Landing con todas las revistas */}
       <Route path="/revistas" element={<MagazinePage />} />
