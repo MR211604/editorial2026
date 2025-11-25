@@ -1,22 +1,24 @@
-import { useSearchParams } from 'react-router-dom';
-import DefaultLayout from '../components/layouts/DefaultLayout';
-import { useSearchPublishings } from '../api/hooks/usePublishings';
+import { useSearchParams, Link } from "react-router-dom";
+import DefaultLayout from "../components/layouts/DefaultLayout";
+import { useSearchPublishings } from "../api/hooks/usePublishings";
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('search') || '';
+  const searchQuery = searchParams.get("search") || "";
 
   const { publishings, isLoading } = useSearchPublishings(searchQuery);
 
   const results = {
     libros: publishings?.data?.libros || [],
     revistas: publishings?.data?.revistas || [],
-    articulos: publishings?.data?.articulos || []
+    articulos: publishings?.data?.articulos || [],
   };
 
-  const error = publishings && !publishings.ok ? 'Error al realizar la búsqueda' : null;
+  const error =
+    publishings && !publishings.ok ? "Error al realizar la búsqueda" : null;
 
-  const totalResults = results.libros.length + results.revistas.length + results.articulos.length;
+  const totalResults =
+    results.libros.length + results.revistas.length + results.articulos.length;
 
   return (
     <DefaultLayout>
@@ -28,7 +30,10 @@ export default function SearchResultsPage() {
           </h1>
           {searchQuery && (
             <p className="text-gray-600">
-              Mostrando resultados para: <span className="font-semibold text-blue-600">"{searchQuery}"</span>
+              Mostrando resultados para:{" "}
+              <span className="font-semibold text-blue-600">
+                "{searchQuery}"
+              </span>
             </p>
           )}
         </div>
@@ -75,7 +80,9 @@ export default function SearchResultsPage() {
             {/* Results Summary */}
             <div className="mb-6 pb-4 border-b border-gray-200">
               <p className="text-gray-700">
-                Se encontraron <span className="font-bold text-blue-600">{totalResults}</span> resultado{totalResults !== 1 ? 's' : ''}
+                Se encontraron{" "}
+                <span className="font-bold text-blue-600">{totalResults}</span>{" "}
+                resultado{totalResults !== 1 ? "s" : ""}
               </p>
             </div>
 
@@ -172,14 +179,12 @@ export default function SearchResultsPage() {
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">
                         {revista.title}
                       </h3>
-                      {revista.resource_URL && (
-                        <a
-                          href={revista.resource_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                      {revista.URL && (
+                        <Link
+                          to={`/revistas/${revista.URL}`}
                           className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium"
                         >
-                          Ver recurso
+                          Ver revista
                           <svg
                             className="w-4 h-4 ml-1"
                             fill="none"
@@ -190,10 +195,10 @@ export default function SearchResultsPage() {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                              d="M9 5l7 7-7 7"
                             />
                           </svg>
-                        </a>
+                        </Link>
                       )}
                     </div>
                   ))}

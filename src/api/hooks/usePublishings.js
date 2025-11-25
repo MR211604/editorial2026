@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  getPublishingByURL,
   getPublishingsByCategory,
   globalSearch,
 } from "../publishings/publishingsService";
@@ -36,6 +37,18 @@ export const useSearchPublishingsByCategory = (
 
   return {
     publishings,
+    isLoading,
+  };
+};
+
+export const useGetPublishingByURL = (publishingURL) => {
+  const { data: publishing, isLoading } = useQuery({
+    queryKey: ["publishingByURL", publishingURL],
+    queryFn: () => getPublishingByURL(publishingURL),
+  });
+
+  return {
+    publishing,
     isLoading,
   };
 };

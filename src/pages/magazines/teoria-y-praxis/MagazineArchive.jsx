@@ -3,6 +3,7 @@ import { useSearchPublishingsByCategory } from "../../../api/hooks/usePublishing
 import Button from "../../../components/ui/Button";
 import { useTeoriaPraxis } from "../../hooks/useTeoriaYPraxis";
 import Loader from "../../../components/ui/Loader";
+import { Link } from "react-router-dom";
 
 export default function MagazineArchive() {
   const [page, setPage] = useState(1);
@@ -86,7 +87,7 @@ export default function MagazineArchive() {
                   </p>
                 </div>
                 <Button className="text-blue-900 font-semibold py-2 px-5 rounded-full text-sm w-max">
-                  Ver detalle
+                  <Link to={`/revistas/${publishing.URL}`}>Ver detalle</Link>
                 </Button>
               </div>
             </div>

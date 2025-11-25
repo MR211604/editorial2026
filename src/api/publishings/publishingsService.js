@@ -25,3 +25,13 @@ export const getPublishingsByCategory = async (
     "Error obteniendo publicaciones por categoria"
   );
 };
+
+// PublishingURL es el slug único de cada publicación
+export const getPublishingByURL = async (publishingURL) => {
+  return handleApiCall(
+    async () =>
+      fetchWithoutToken(`api/publishings/searchPublishing/${publishingURL}`),
+    "Error fetching publishings by category",
+    "Error obteniendo publicaciones por categoria"
+  );
+};
