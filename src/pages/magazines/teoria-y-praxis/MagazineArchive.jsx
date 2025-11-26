@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchPublishingsByCategory } from "../../../api/hooks/usePublishings";
+import { useGetPublishings } from "../../../api/hooks/usePublishings";
 import Button from "../../../components/ui/Button";
 import { useTeoriaPraxis } from "../../hooks/useTeoriaYPraxis";
 import Loader from "../../../components/ui/Loader";
@@ -8,8 +8,12 @@ import { Link } from "react-router-dom";
 export default function MagazineArchive() {
   const [page, setPage] = useState(1);
   const { category, isLoading } = useTeoriaPraxis();
-  const { publishings, isLoading: isPublishingsLoading } =
-    useSearchPublishingsByCategory(category?.data?.id, "Revista", page, 9);
+  const { publishings, isLoading: isPublishingsLoading } = useGetPublishings(
+    category?.data?.id,
+    "Revista",
+    page,
+    9
+  );
 
   if (isLoading || isPublishingsLoading) {
     return <Loader />;

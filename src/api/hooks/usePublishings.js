@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import {
   getPublishingByURL,
-  getPublishingsByCategory,
+  getPublishings,
   globalSearch,
 } from "../publishings/publishingsService";
 
@@ -17,22 +17,15 @@ export const useSearchPublishings = (searchValue) => {
   };
 };
 
-export const useSearchPublishingsByCategory = (
+export const useGetPublishings = (
   categoryId,
   publishingType,
   page = 1,
   limit = 10
 ) => {
   const { data: publishings, isLoading } = useQuery({
-    queryKey: [
-      "publishingsByCategory",
-      categoryId,
-      publishingType,
-      page,
-      limit,
-    ],
-    queryFn: () =>
-      getPublishingsByCategory(categoryId, publishingType, page, limit),
+    queryKey: ["publishings", categoryId, publishingType, page, limit],
+    queryFn: () => getPublishings(categoryId, publishingType, page, limit),
   });
 
   return {
@@ -51,4 +44,21 @@ export const useGetPublishingByURL = (publishingURL) => {
     publishing,
     isLoading,
   };
+};
+
+export const useGetInfinitePublishings = (
+  categoryId,
+  publishingType,
+  limit = 10
+) => {
+  return useInfiniteQuery({
+    queryKey: ["infinitePublishings", categoryId, publishingType, limit],
+    queryFn: ({ pageParam = 1 }) =>
+      getPublishings(categoryId, publishingType, pageParam, limit),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { current_page, last_page } = lastPage?.pagination || {};
+      return current_page < last_page ? current_page + 1 : undefined;
+    },
+  });
 };

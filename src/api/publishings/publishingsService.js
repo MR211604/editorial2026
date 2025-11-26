@@ -10,7 +10,7 @@ export const globalSearch = async (searchValue) => {
   );
 };
 
-export const getPublishingsByCategory = async (
+export const getPublishings = async (
   categoryId,
   publishingType = null,
   page = 1,
@@ -21,8 +21,8 @@ export const getPublishingsByCategory = async (
       fetchWithoutToken(
         `api/publishings/getPublishings?publishing_type=${publishingType}&category=${categoryId}&page=${page}&limit=${limit}`
       ),
-    "Error fetching publishings by category",
-    "Error obteniendo publicaciones por categoria"
+    "Error fetching publishings",
+    "Error obteniendo publicaciones"
   );
 };
 

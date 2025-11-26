@@ -1,9 +1,8 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 import { Chrono } from "react-chrono";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useCallback } from "react";
-import { fetchItems } from "../helpers/fetchTimelineItems";
+import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
 
 export default function BooksPage() {
   const { ref, inView } = useInView();
@@ -16,19 +15,24 @@ export default function BooksPage() {
     isFetchingNextPage,
     hasNextPage,
     status,
-  } = useInfiniteQuery({
-    queryKey: ["books"],
-    queryFn: ({ pageParam }) => fetchItems(pageParam),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  } = useGetInfinitePublishings("", "Libro", 10);
 
   useEffect(() => {
     if (data?.pages) {
       const newItems = data.pages.flatMap((page) =>
-        page.data.map((item, index) => ({
-          ...item,
-          id: `${page.currentPage}-${index}`,
+        page.data.map((publishing) => ({
+          title: publishing.publish_date
+            ? publishing.publish_date
+            : publishing.volume,
+          cardTitle: publishing.title,
+          cardSubtitle:
+            publishing.authors
+              ?.map((author) => `${author.name} ${author.lastname}`)
+              .join(", ") || "Sin autor",
+          cardDetailedText: `Código: ${
+            publishing.publish_code || "N/A"
+          } | Páginas: ${publishing.pages || "N/A"}`,
+          id: publishing.id,
         }))
       );
       setAllItems(newItems);
