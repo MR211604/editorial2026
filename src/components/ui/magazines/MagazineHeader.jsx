@@ -1,9 +1,11 @@
+import { getImagePath } from "../../../utils/imagePath";
+
 export default function MagazineHeader() {
   return (
     <div className="w-screen relative left-1/2 right-1/2 ml-[calc(-50vw+0px)] mr-[calc(-50vw+0px)]">
       <img
         className="w-full h-full block"
-        src="/src/assets/img/book-banner.jpg"
+        src={getImagePath("img/book-banner.jpg")}
         alt="Revista teoría y práxis"
       />
       {/* Texto  */}

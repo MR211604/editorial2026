@@ -18,7 +18,7 @@ export default function MagazineDetailPage() {
   if (!publishing?.ok || !publishing?.data) {
     return (
       <DefaultLayout>
-        <div className="max-w-screen-xl mx-auto p-6 mt-8">
+        <div className="max-w-screen-7xl mx-auto p-6 mt-8">
           <div className="bg-red-50 border border-red-200 rounded-lg p-8 text-center">
             <svg
               className="mx-auto h-12 w-12 text-red-400 mb-4"
@@ -110,15 +110,14 @@ export default function MagazineDetailPage() {
 
               {/* Magazine Info */}
               <div className="space-y-3 mb-6">
-                {magazine.publisher && (
+                {/* {magazine.publisher && (
                   <div className="flex items-start">
                     <span className="font-semibold text-gray-700 w-32 flex-shrink-0">
                       Editorial:
                     </span>
                     <span className="text-gray-600">{magazine.publisher}</span>
                   </div>
-                )}
-
+                )} */}
                 {magazine.type?.name && (
                   <div className="flex items-start">
                     <span className="font-semibold text-gray-700 w-32 flex-shrink-0">
@@ -151,15 +150,15 @@ export default function MagazineDetailPage() {
                 {magazine.publish_date && (
                   <div className="flex items-start">
                     <span className="font-semibold text-gray-700 w-32 flex-shrink-0">
-                      Fecha publicación:
+                      Año edición:
                     </span>
                     <span className="text-gray-600">
                       {new Date(magazine.publish_date).toLocaleDateString(
                         "es-ES",
                         {
                           year: "numeric",
-                          month: "long",
-                          day: "numeric",
+                          // month: "long",
+                          // day: "numeric",
                         }
                       )}
                     </span>
@@ -205,29 +204,56 @@ export default function MagazineDetailPage() {
               )}
 
               {/* Resource URL */}
-              {magazine.resource_URL && (
-                <a
-                  href={magazine.resource_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              {/* {magazine.resource_URL && ( */}
+              <a
+                // href={magazine.resource_URL}
+                href={
+                  "https://www.udb.edu.sv/editorial_files/revistas/es/teoria_y_praxis/creditos.pdf"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-blue-600 text-white px-6 mr-4 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  Descargar revista
-                </a>
-              )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                Consejo editorial
+              </a>
+
+              <a
+                href={
+                  "https://www.udb.edu.sv/editorial_files/revistas/es/teoria_y_praxis/normas-para-presentacion-de-articulos.pdf"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                Normas de publicación
+              </a>
+              {/* )} */}
             </div>
           </div>
 

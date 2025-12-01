@@ -6,30 +6,71 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import Button from "../components/ui/Button";
+import { getImagePath } from "../utils/imagePath";
 
 const rows = [
   [
-    { title: "Manual 1", desc: "Descripción del manual 1", img: "./src/assets/img/Algebra-lineal.png", },
-    { title: "Manual 2", desc: "Descripción del manual 2", img: "./src/assets/img/Algebra-vectorial.jpg", },
-    { title: "Manual 3", desc: "Descripción del manual 3", img: "./src/assets/img/Calculo-diferencial-2024.jpg", },
-    { title: "Manual 4", desc: "Descripción del manual 4", img: "./src/assets/img/Algebra-vectorial.jpg", },
-    { title: "Manual 5", desc: "Descripción del manual 5", img: "./src/assets/img/Algebra-lineal.png", },
+    {
+      title: "Manual 1",
+      desc: "Descripción del manual 1",
+      img: "img/Algebra-lineal.png",
+    },
+    {
+      title: "Manual 2",
+      desc: "Descripción del manual 2",
+      img: "img/Algebra-vectorial.jpg",
+    },
+    {
+      title: "Manual 3",
+      desc: "Descripción del manual 3",
+      img: "img/Calculo-diferencial-2024.jpg",
+    },
+    {
+      title: "Manual 4",
+      desc: "Descripción del manual 4",
+      img: "img/Algebra-vectorial.jpg",
+    },
+    {
+      title: "Manual 5",
+      desc: "Descripción del manual 5",
+      img: "img/Algebra-lineal.png",
+    },
   ],
   [
-    { title: "Manual 6", desc: "Descripción del manual 6", img: "./src/assets/img/Algebra-lineal.png", },
-    { title: "Manual 7", desc: "Descripción del manual 7", img: "./src/assets/img/Algebra-vectorial.jpg", },
-    { title: "Manual 8", desc: "Descripción del manual 8", img: "./src/assets/img/Calculo-diferencial-2024.jpg", },
-    { title: "Manual 9", desc: "Descripción del manual 9", img: "./src/assets/img/Algebra-vectorial.jpg", },
-    { title: "Manual 10", desc: "Descripción del manual 10", img: "./src/assets/img/Algebra-lineal.png", },
+    {
+      title: "Manual 6",
+      desc: "Descripción del manual 6",
+      img: "img/Algebra-lineal.png",
+    },
+    {
+      title: "Manual 7",
+      desc: "Descripción del manual 7",
+      img: "img/Algebra-vectorial.jpg",
+    },
+    {
+      title: "Manual 8",
+      desc: "Descripción del manual 8",
+      img: "img/Calculo-diferencial-2024.jpg",
+    },
+    {
+      title: "Manual 9",
+      desc: "Descripción del manual 9",
+      img: "img/Algebra-vectorial.jpg",
+    },
+    {
+      title: "Manual 10",
+      desc: "Descripción del manual 10",
+      img: "img/Algebra-lineal.png",
+    },
   ],
 ];
 
 const realImages = [
-  "./src/assets/img/Algebra-lineal.png",
-  "./src/assets/img/Algebra-vectorial.jpg",
-  "./src/assets/img/Calculo-diferencial-2024.jpg",
-  "./src/assets/img/Algebra-vectorial.jpg",
-  "./src/assets/img/Algebra-lineal.png",
+  "img/Algebra-lineal.png",
+  "img/Algebra-vectorial.jpg",
+  "img/Calculo-diferencial-2024.jpg",
+  "img/Algebra-vectorial.jpg",
+  "img/Algebra-lineal.png",
 ];
 
 const carouselImages =
@@ -75,7 +116,7 @@ export default function ManualsPage() {
             {carouselImages.map((src, idx) => (
               <SwiperSlide key={idx}>
                 <img
-                  src={src}
+                  src={getImagePath(src)}
                   alt={`Libro ${idx + 1}`}
                   className="rounded-lg shadow-lg object-cover w-42 h-56 transition-all duration-300"
                 />
@@ -94,16 +135,14 @@ export default function ManualsPage() {
           <div key={rowIdx} className="w-full max-w-5xl">
             <Swiper
               slidesPerView={1}
-              breakpoints={
-                {
-                  768: {
-                    slidesPerView: 3
-                  },
-                  540: {
-                    slidesPerView: 2
-                  }
-                }
-              }
+              breakpoints={{
+                768: {
+                  slidesPerView: 3,
+                },
+                540: {
+                  slidesPerView: 2,
+                },
+              }}
               spaceBetween={40}
               navigation={true}
               modules={[Navigation]}
@@ -113,14 +152,22 @@ export default function ManualsPage() {
                 <SwiperSlide key={idx}>
                   <div className="flex flex-col items-center bg-white rounded-lg p-4 shadow-md">
                     <img
-                      src={manual.img}
+                      src={getImagePath(manual.img)}
                       alt={manual.title}
                       className="w-48 h-64 object-cover mb-4 rounded-md shadow"
                     />
                     <div className="w-full px-2">
-                      <h2 className="font-bold text-blue-900 mb-2 text-lg">{manual.title}</h2>
-                      <p className="text-sm text-gray-700 mb-4">{manual.desc}</p>
-                      <Button className={"py-2 px-5 rounded-full transition text-md text-blue-900 font-semibold"}>
+                      <h2 className="font-bold text-blue-900 mb-2 text-lg">
+                        {manual.title}
+                      </h2>
+                      <p className="text-sm text-gray-700 mb-4">
+                        {manual.desc}
+                      </p>
+                      <Button
+                        className={
+                          "py-2 px-5 rounded-full transition text-md text-blue-900 font-semibold"
+                        }
+                      >
                         Ver detalle
                       </Button>
                     </div>
