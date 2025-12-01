@@ -7,5 +7,7 @@ export default defineConfig({
   server: {
     port: 4321,
   },
+  // base: "/editorial2026/",
+  base: "/",
   plugins: [react(), tailwindcss()],
 });
