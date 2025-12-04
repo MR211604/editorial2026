@@ -41,7 +41,10 @@ export default function AppRouter() {
       <Route path="/revistas" element={<MagazinePage />} />
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
-      <Route path="/revistas/teoria_y_praxis" element={<TP_Layout />}>
+      <Route
+        path="/revistas/teoria_y_praxis"
+        element={<TP_Layout headerTitle={"Teoría y práxis"} />}
+      >
         <Route index element={<TP_Archive />} />
         <Route path="about" element={<TP_About />} />
         <Route path="editorial-policy" element={<TP_EditorialPolicy />} />
@@ -55,9 +58,16 @@ export default function AppRouter() {
       </Route>
 
       {/* ——— Otras revistas (placeholder) ——— */}
-      <Route path="/revistas/cientifica" element={<CientificaIndex />} />
-      <Route path="/revistas/dialogos" element={<DiaLogosIndex />} />
-      <Route path="/revistas/ingnovacion" element={<IngNovacionIndex />} />
+      {/* <Route path="/revistas/cientifica" element={<CientificaIndex />} /> */}
+
+      <Route
+        path="/revistas/dialogos"
+        element={<TP_Layout headerTitle={"Diá-logos"} showPills={false} />}
+      >
+        <Route index element={<DiaLogosIndex />} />
+      </Route>
+
+      {/* <Route path="/revistas/ingnovacion" element={<IngNovacionIndex />} /> */}
 
       {/* ——— Página de detalle de revista individual ——— */}
       <Route path="/revistas/:magazineURL" element={<MagazineDetailPage />} />

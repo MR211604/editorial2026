@@ -1,6 +1,6 @@
 import { getImagePath } from "../../../utils/imagePath";
 
-export default function MagazineHeader() {
+export default function MagazineHeader({ headerTitle }) {
   return (
     <div className="w-screen relative left-1/2 right-1/2 ml-[calc(-50vw+0px)] mr-[calc(-50vw+0px)]">
       <img
@@ -17,7 +17,7 @@ export default function MagazineHeader() {
           Revista
         </span>
         <span className="text-4xl md:text-6xl lg:text-8xl font-bold block leading-[1.3]">
-          Teoría y praxis
+          {headerTitle}
         </span>
       </div>
     </div>

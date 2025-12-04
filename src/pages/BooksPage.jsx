@@ -1,8 +1,8 @@
 import DefaultLayout from "../components/layouts/DefaultLayout";
-import { Chrono } from "react-chrono";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useCallback } from "react";
 import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
+import { Chrono } from "react-chrono";
 
 export default function BooksPage() {
   const { ref, inView } = useInView();
@@ -19,7 +19,7 @@ export default function BooksPage() {
 
   useEffect(() => {
     if (data?.pages) {
-      const newItems = data.pages.flatMap((page) =>
+      const newItems = data?.pages.flatMap((page) =>
         page.data.map((publishing) => ({
           title: publishing.publish_date
             ? publishing.publish_date
@@ -33,6 +33,13 @@ export default function BooksPage() {
             publishing.publish_code || "N/A"
           } | Páginas: ${publishing.pages || "N/A"}`,
           id: publishing.id,
+          media: {
+            name: "RAF Spitfires during the Battle of Britain",
+            source: {
+              url: "https://www.udb.edu.sv/editorial/portadas/es/small/marmolesclarinesybroncesminiatura.png",
+            },
+            type: "IMAGE",
+          },
         }))
       );
       setAllItems(newItems);
@@ -73,10 +80,10 @@ export default function BooksPage() {
           ) : allItems.length > 0 ? (
             <>
               <Chrono
-                activeItemIndex
                 slideShow={false}
                 disableToolbar
                 items={allItems}
+                mediaHeight={300}
                 mode="VERTICAL_ALTERNATING"
               />
               <div ref={ref}></div>

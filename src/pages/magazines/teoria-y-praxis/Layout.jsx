@@ -15,11 +15,11 @@ const pills = [
   { label: "Consejo editorial", path: "editorial-board" },
 ];
 
-export default function TP_Layout() {
+export default function TP_Layout({ headerTitle, showPills = true }) {
   return (
     <DefaultLayout>
       <TeoriaPraxisProvider>
-        <MagazineHeader />
+        <MagazineHeader headerTitle={headerTitle} />
 
         {/* Contenido dinámico */}
         <section className="mx-5 my-8">
@@ -27,13 +27,15 @@ export default function TP_Layout() {
         </section>
 
         {/* Pills */}
-        <nav className="grid grid-cols-2 md:grid-cols-3 gap-5 mx-20 mt-20">
-          {pills.map(({ label, path }) => (
-            <Pill key={path} to={path}>
-              {label}
-            </Pill>
-          ))}
-        </nav>
+        {showPills && (
+          <nav className="grid grid-cols-2 md:grid-cols-3 gap-5 mx-20 mt-20">
+            {pills.map(({ label, path }) => (
+              <Pill key={path} to={path}>
+                {label}
+              </Pill>
+            ))}
+          </nav>
+        )}
       </TeoriaPraxisProvider>
     </DefaultLayout>
   );
