@@ -1,11 +1,26 @@
-import { useState, useEffect } from 'react';
-import DefaultLayout from '../components/layouts/DefaultLayout';
-import SearchInput from '../components/ui/SearchInput';
+import { useState, useEffect } from "react";
+import DefaultLayout from "../components/layouts/DefaultLayout";
+import SearchInput from "../components/ui/SearchInput";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
   "Aca va texto 2",
-  "Texto 3 "
+  "Texto 3 ",
+];
+
+const links = [
+  {
+    label: "Reglamento",
+  },
+  {
+    label: "Procedimientos de publicación",
+  },
+  {
+    label: "Publicacion para revista",
+  },
+  {
+    label: "Consejo editorial",
+  },
 ];
 
 export default function HomePage() {
@@ -21,7 +36,6 @@ export default function HomePage() {
   return (
     <DefaultLayout>
       <div className="bg-white">
-
         {/* Primera sección */}
         <section className="flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-16">
           <div className="w-full md:w-1/2 space-y-6">
@@ -61,7 +75,7 @@ export default function HomePage() {
 
           <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
             <img
-              src="/img/diseño-editorial.png"
+              src="/img/udb_editorial_logo.jpeg"
               alt="Diseño editorial UDB"
               className="w-full max-w-lg h-auto"
             />
@@ -83,7 +97,8 @@ export default function HomePage() {
             </p>
 
             <p className="text-gray-700">
-              adscrita a la Rectoría que nació para dar respuesta a dos necesidades imperiosas
+              adscrita a la Rectoría que nació para dar respuesta a dos
+              necesidades imperiosas
             </p>
 
             <div className="min-h-[120px] flex items-center justify-center px-4">
@@ -97,12 +112,31 @@ export default function HomePage() {
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentSlide ? 'bg-[#0c65af] w-6' : 'bg-blue-200'
-                    }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    idx === currentSlide ? "bg-[#0c65af] w-6" : "bg-blue-200"
+                  }`}
                 />
               ))}
             </div>
           </div>
+        </section>
+
+        <section>
+          <div className="max-w-4xl mx-auto space-y-6 text-center">
+            <h2 className="text-3xl font-semibold text-[#0c65af] mb-2">
+              Detalles de publicación
+            </h2>
+          </div>
+
+          <nav className="grid justify-content-center grid-cols-2 gap-5 mx-20 mt-15">
+            {links.map(({ label, path }) => (
+              <a href={path}>
+                <div className="border-2 border-solid border-blue-500 transition-all duration-200 hover:scale-102 rounded-full text-sm md:text-md lg:text-lg cursor-pointer p-3 md:p-3 font-bold text-center text-blue-950 bg-transparent hover:bg-blue-50">
+                  {label}
+                </div>
+              </a>
+            ))}
+          </nav>
         </section>
       </div>
     </DefaultLayout>

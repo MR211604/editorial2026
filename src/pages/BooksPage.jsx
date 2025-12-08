@@ -3,10 +3,12 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useCallback } from "react";
 import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
 import { Chrono } from "react-chrono";
+import BookCard from "../components/ui/BookCard";
 
 export default function BooksPage() {
   const { ref, inView } = useInView();
   const [allItems, setAllItems] = useState([]);
+  const [customCards, setCustomCards] = useState([]);
 
   const {
     data,
@@ -19,30 +21,32 @@ export default function BooksPage() {
 
   useEffect(() => {
     if (data?.pages) {
-      const newItems = data?.pages.flatMap((page) =>
-        page.data.map((publishing) => ({
-          title: publishing.publish_date
-            ? publishing.publish_date
-            : publishing.volume,
-          cardTitle: publishing.title,
-          cardSubtitle:
+      const publishings = data?.pages.flatMap((page) => page.data);
+
+      const timelineItems = publishings.map((publishing) => ({
+        title: publishing.publish_date
+          ? publishing.publish_date
+          : publishing.volume,
+      }));
+
+      const cards = publishings.map((publishing, index) => (
+        <BookCard
+          key={publishing.id || index}
+          title={publishing.title}
+          authors={
             publishing.authors
               ?.map((author) => `${author.name} ${author.lastname}`)
-              .join(", ") || "Sin autor",
-          cardDetailedText: `Código: ${
-            publishing.publish_code || "N/A"
-          } | Páginas: ${publishing.pages || "N/A"}`,
-          id: publishing.id,
-          media: {
-            name: "RAF Spitfires during the Battle of Britain",
-            source: {
-              url: "https://www.udb.edu.sv/editorial/portadas/es/small/marmolesclarinesybroncesminiatura.png",
-            },
-            type: "IMAGE",
-          },
-        }))
-      );
-      setAllItems(newItems);
+              .join(", ") || "Sin autor"
+          }
+          code={publishing.publish_code || "N/A"}
+          pages={publishing.pages || "N/A"}
+          imageUrl="/img/Sendas-feministas.jpg"
+          imageLeft={(index + 1) % 2 === 0}
+        />
+      ));
+
+      setAllItems(timelineItems);
+      setCustomCards(cards);
     }
   }, [data]);
 
@@ -83,9 +87,11 @@ export default function BooksPage() {
                 slideShow={false}
                 disableToolbar
                 items={allItems}
-                mediaHeight={300}
+                cardHeight={300}
                 mode="VERTICAL_ALTERNATING"
-              />
+              >
+                {customCards}
+              </Chrono>
               <div ref={ref}></div>
               {isFetchingNextPage && (
                 <p className="mt-4 text-gray-600">Cargando más elementos...</p>

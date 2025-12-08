@@ -4,7 +4,7 @@ export default function MagazineHeader({ headerTitle }) {
   return (
     <div className="w-screen relative left-1/2 right-1/2 ml-[calc(-50vw+0px)] mr-[calc(-50vw+0px)]">
       <img
-        className="w-full h-full block"
+        className="w-full h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] object-cover block"
         src={getImagePath("img/book-banner.jpg")}
         alt="Revista teoría y práxis"
       />

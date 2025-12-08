@@ -5,15 +5,15 @@
 @source "../node_modules/flowbite";
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('./assets/fonts/Montserrat/Montserrat.woff2') format('woff2');
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat/Montserrat.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 700;
   font-display: swap;
 }
 
 @theme {
-  --font-sans: 'Montserrat', system-ui, sans-serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
 }
 
 #root {
@@ -29,12 +29,12 @@
 
 .superpuestoSwiper .swiper-slide-active {
   z-index: 10 !important;
-  transform: scale(1.05) !important;   
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
 }
 
 .superpuestoSwiper .swiper-slide-next,
 .superpuestoSwiper .swiper-slide-prev {
   z-index: 5 !important;
-  filter: brightness(1); 
+  filter: brightness(1);
 }
