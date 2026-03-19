@@ -4,6 +4,7 @@ import Button from "../../../components/ui/Button";
 import { useTeoriaPraxis } from "../../hooks/useTeoriaYPraxis";
 import Loader from "../../../components/ui/Loader";
 import { Link } from "react-router-dom";
+import { getPublishingImagePath } from "../../../helpers/imagePath";
 
 export default function MagazineArchive() {
   const [page, setPage] = useState(1);
@@ -12,7 +13,7 @@ export default function MagazineArchive() {
     category?.data?.id,
     "Revista",
     page,
-    9
+    9,
   );
 
   if (isLoading || isPublishingsLoading) {
@@ -63,9 +64,7 @@ export default function MagazineArchive() {
             >
               {publishing.cover ? (
                 <img
-                  src={`${import.meta.env.VITE_EDITORIAL_LOCAL_API_URL}/${
-                    publishing.cover
-                  }`}
+                  src={getPublishingImagePath(publishing)}
                   alt={publishing.title}
                   className="w-32 h-48 rounded-md shadow mr-4 flex-shrink-0 object-cover"
                 />

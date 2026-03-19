@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
 import { Chrono } from "react-chrono";
 import BookCard from "../components/ui/BookCard";
+import { getImagePath } from "../helpers/imagePath";
 
 export default function BooksPage() {
   const { ref, inView } = useInView();
@@ -40,7 +41,7 @@ export default function BooksPage() {
           }
           code={publishing.publish_code || "N/A"}
           pages={publishing.pages || "N/A"}
-          imageUrl="/img/Sendas-feministas.jpg"
+          imageUrl={getImagePath("/img/Sendas-feministas.jpg")}
           imageLeft={(index + 1) % 2 === 0}
         />
       ));
@@ -84,7 +85,6 @@ export default function BooksPage() {
           ) : allItems.length > 0 ? (
             <>
               <Chrono
-                slideShow={false}
                 disableToolbar
                 items={allItems}
                 cardHeight={300}

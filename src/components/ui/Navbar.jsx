@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CustomLink from "./CustomLink";
 import SearchInput from "./SearchInput";
 import { useState, useEffect, useRef } from "react";
-import { getImagePath } from "../../utils/imagePath";
+import { getImagePath } from "../../helpers/imagePath";
 import { useFilteredCategories } from "../hooks/useFilteredCategories";
 
 export default function Navbar() {
@@ -154,7 +154,7 @@ export default function Navbar() {
               onMouseLeave={() => {
                 window.hideSubmenuTimeout = setTimeout(
                   () => setIsMagazinesHovered(false),
-                  200
+                  200,
                 );
               }}
             >

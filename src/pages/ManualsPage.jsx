@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import Button from "../components/ui/Button";
-import { getImagePath } from "../utils/imagePath";
+import { getImagePath } from "../helpers/imagePath";
 
 const rows = [
   [

@@ -1,4 +1,4 @@
-import { getImagePath } from "../../../utils/imagePath";
+import { getImagePath } from "../../../helpers/imagePath";
 
 export default function MagazineHeader({ headerTitle }) {
   return (

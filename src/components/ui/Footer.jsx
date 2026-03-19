@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getImagePath } from "../../utils/imagePath";
+import { getImagePath } from "../../helpers/imagePath";
 
 export default function Footer() {
   return (

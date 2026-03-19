@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 import Button from "../components/ui/Button";
-import { getImagePath } from "../utils/imagePath";
+import { getImagePath } from "../helpers/imagePath";
 
 export default function ContactPage() {
   return (

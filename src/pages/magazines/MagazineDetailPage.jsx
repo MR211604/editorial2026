@@ -2,11 +2,13 @@ import { useParams, Link } from "react-router-dom";
 import { useGetPublishingByURL } from "../../api/hooks/usePublishings";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import Loader from "../../components/ui/Loader";
+import { getPublishingImagePath } from "../../helpers/imagePath";
 
 export default function MagazineDetailPage() {
   const { magazineURL } = useParams();
   const { publishing, isLoading } = useGetPublishingByURL(magazineURL);
-
+  console.log(publishing);
+  const magazine = publishing?.data;
   if (isLoading) {
     return (
       <DefaultLayout>
@@ -64,8 +66,6 @@ export default function MagazineDetailPage() {
     );
   }
 
-  const magazine = publishing.data;
-
   return (
     <DefaultLayout>
       <main className="max-w-screen-xl mx-auto p-6 mt-8">
@@ -76,9 +76,7 @@ export default function MagazineDetailPage() {
             <div className="flex-shrink-0">
               {magazine.cover ? (
                 <img
-                  src={`${import.meta.env.VITE_EDITORIAL_LOCAL_API_URL}/${
-                    magazine.cover
-                  }`}
+                  src={getPublishingImagePath(publishing?.data)}
                   alt={magazine.title}
                   className="w-64 h-auto rounded-lg shadow-md object-cover mx-auto md:mx-0"
                 />
@@ -159,7 +157,7 @@ export default function MagazineDetailPage() {
                           year: "numeric",
                           // month: "long",
                           // day: "numeric",
-                        }
+                        },
                       )}
                     </span>
                   </div>
