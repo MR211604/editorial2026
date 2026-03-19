@@ -17,11 +17,7 @@ import TP_Archive from "./pages/magazines/teoria-y-praxis/MagazineArchive";
 import TP_AcceptanceProcess from "./pages/magazines/teoria-y-praxis/MagazineAcceptanceProcess";
 import TP_PublicationStandards from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
 import TP_EditorialBoard from "./pages/magazines/teoria-y-praxis/MagazineEditorialBoard";
-
-/* ——— REVISTAS "EN CONSTRUCCIÓN" ——— */
-import CientificaIndex from "./pages/magazines/cientifica/index";
 import DiaLogosIndex from "./pages/magazines/dia-logos/index";
-import IngNovacionIndex from "./pages/magazines/ing-novacion/index";
 
 /* ——— PÁGINA DE DETALLE DE REVISTA ——— */
 import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
@@ -57,23 +53,16 @@ export default function AppRouter() {
         <Route path="editorial-board" element={<TP_EditorialBoard />} />
       </Route>
 
-      {/* ——— Otras revistas (placeholder) ——— */}
-      {/* <Route path="/revistas/cientifica" element={<CientificaIndex />} /> */}
-
+      {/* ——— Dialogos (layout + rutas anidadas) ——— */}
       <Route
-        path="/revistas/dialogos"
+        path="/revistas/dia-logos"
         element={<TP_Layout headerTitle={"Diá-logos"} showPills={false} />}
       >
         <Route index element={<DiaLogosIndex />} />
       </Route>
 
-      {/* <Route path="/revistas/ingnovacion" element={<IngNovacionIndex />} /> */}
-
       {/* ——— Página de detalle de revista individual ——— */}
       <Route path="/revistas/:magazineURL" element={<MagazineDetailPage />} />
-
-      {/* 404 opcional */}
-      {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>
   );
 }

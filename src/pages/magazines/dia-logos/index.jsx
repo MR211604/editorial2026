@@ -4,15 +4,16 @@ import { useGetPublishings } from "../../../api/hooks/usePublishings";
 import Loader from "../../../components/ui/Loader";
 import Button from "../../../components/ui/Button";
 import { Link } from "react-router-dom";
+import { getPublishingImagePath } from "../../../helpers/imagePath";
 
 export default function DiaLogosIndex() {
   const [page, setPage] = useState(1);
-  const { category, isLoading } = useCategory("dialogos");
+  const { category, isLoading } = useCategory("dia-logos");
   const { publishings, isLoading: isPublishingsLoading } = useGetPublishings(
     category?.data?.id,
     "Revista",
     page,
-    9
+    9,
   );
 
   if (isLoading || isPublishingsLoading) {
@@ -63,9 +64,7 @@ export default function DiaLogosIndex() {
             >
               {publishing.cover ? (
                 <img
-                  src={`${import.meta.env.VITE_EDITORIAL_LOCAL_API_URL}/${
-                    publishing.cover
-                  }`}
+                  src={getPublishingImagePath(publishing)}
                   alt={publishing.title}
                   className="w-32 h-48 rounded-md shadow mr-4 flex-shrink-0 object-cover"
                 />

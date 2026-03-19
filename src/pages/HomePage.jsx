@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 import SearchInput from "../components/ui/SearchInput";
+import CustomBookSlider from "../components/ui/CustomBookSlider";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
@@ -11,15 +12,19 @@ const carouselTexts = [
 const links = [
   {
     label: "Reglamento",
+    path: "https://www.udb.edu.sv/editorial/docspdf/reglamentos-de-la-editorial.pdf",
   },
   {
     label: "Procedimientos de publicación",
+    path: "https://www.udb.edu.sv/editorial/docspdf/procedimiento-de-publicacion.pdf",
   },
   {
     label: "Publicacion para revista",
+    path: "https://www.udb.edu.sv/editorial/docspdf/manual-de-postulacion.pdf",
   },
   {
     label: "Consejo editorial",
+    path: "https://www.udb.edu.sv/editorial/docspdf/consejo_editorial_udb_2022.pdf",
   },
 ];
 
@@ -37,8 +42,8 @@ export default function HomePage() {
     <DefaultLayout>
       <div className="bg-white">
         {/* Primera sección */}
-        <section className="flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-16">
-          <div className="w-full md:w-1/2 space-y-6">
+        <section className="flex flex-col md:flex-row items-center justify-center gap-10 mt-18 mb-18 max-w-6xl mx-auto">
+          <div className="w-full md:w-1/2 space-y-6 flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold text-[#0c65af] mb-4">
               El verdadero espacio de aprendizaje
             </h1>
@@ -73,13 +78,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
-            <img
-              src="/img/udb_editorial_logo.jpeg"
-              alt="Diseño editorial UDB"
-              className="w-full max-w-lg h-auto"
-            />
-          </div>
+          <CustomBookSlider />
         </section>
 
         {/* Espacio reducido a 60px */}
