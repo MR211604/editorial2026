@@ -7,9 +7,9 @@
  */
 export const handleApiResponse = (
   response,
-  defaultMessage = "Error en la solicitud"
+  defaultMessage = "Error en la solicitud",
 ) => {
-  if (!response.ok) {
+  if (response.ok === false || response.success === false) {
     const err = new Error(response.message || defaultMessage);
     err.status = response.error;
     err.errors = response.errors;
@@ -28,7 +28,7 @@ export const handleApiResponse = (
 export const handleApiCall = async (
   apiCall,
   errorContext,
-  defaultErrorMessage
+  defaultErrorMessage,
 ) => {
   try {
     const response = await apiCall();

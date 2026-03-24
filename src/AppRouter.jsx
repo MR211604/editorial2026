@@ -21,6 +21,7 @@ import DiaLogosIndex from "./pages/magazines/dia-logos/index";
 
 /* ——— PÁGINA DE DETALLE DE REVISTA ——— */
 import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
+import GalleryPage from "./pages/GalleryPage";
 
 export default function AppRouter() {
   return (
@@ -32,7 +33,7 @@ export default function AppRouter() {
       <Route path="/textos-escolares" element={<SchoolTextsPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/results" element={<SearchResultsPage />} />
-
+      <Route path="/gallery" element={<GalleryPage />} />
       {/* Landing con todas las revistas */}
       <Route path="/revistas" element={<MagazinePage />} />
 

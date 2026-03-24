@@ -1,7 +1,11 @@
 const baseURL = import.meta.env.VITE_EDITORIAL_LOCAL_API_URL;
 
-export const fetchWithoutToken = async (endpoint, data, method) => {
+export const fetchWithoutToken = async (endpoint, data, method, URL = null) => {
   if (method === "GET") {
+    if (URL !== null) {
+      const response = await fetch(`${URL}/${endpoint}`);
+      return await response.json();
+    }
     const response = await fetch(`${baseURL}/${endpoint}`);
     return await response.json();
   } else {

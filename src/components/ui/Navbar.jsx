@@ -252,6 +252,7 @@ export default function Navbar() {
             {/* <CustomLink to="/manuales">Manuales</CustomLink> */}
             {/* <CustomLink to="/textos-escolares">Textos Escolares</CustomLink> */}
             <CustomLink to="/contact">Contacto</CustomLink>
+            <CustomLink to="/gallery">Galeria</CustomLink>
 
             {/* buscador móvil */}
             <div className="mt-2 md:hidden">
