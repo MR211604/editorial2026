@@ -65,47 +65,45 @@ export default function BooksPage() {
   }, [inView, loadMoreItems]);
 
   return (
-    <DefaultLayout>
-      <main className="p-4 mt-16">
-        <section className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl text-sky-700 font-bold mb-8">
-            LÍNEA DE TIEMPO "LIBROS"
-          </h1>
+    <main className="p-4 mt-16">
+      <section className="flex flex-col items-center justify-center">
+        <h1 className="text-3xl text-sky-700 font-bold mb-8">
+          LÍNEA DE TIEMPO "LIBROS"
+        </h1>
 
-          {isLoading ? (
-            <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-gray-600 text-lg">
-                Cargando la línea de tiempo...
-              </p>
-            </div>
-          ) : status === "error" ? (
-            <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-red-600 text-lg">Error al cargar los datos</p>
-            </div>
-          ) : allItems.length > 0 ? (
-            <>
-              <Chrono
-                disableToolbar
-                items={allItems}
-                cardHeight={300}
-                mode="VERTICAL_ALTERNATING"
-              >
-                {customCards}
-              </Chrono>
-              <div ref={ref}></div>
-              {isFetchingNextPage && (
-                <p className="mt-4 text-gray-600">Cargando más elementos...</p>
-              )}
-            </>
-          ) : (
-            <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-gray-600 text-lg">
-                No hay elementos para mostrar
-              </p>
-            </div>
-          )}
-        </section>
-      </main>
-    </DefaultLayout>
+        {isLoading ? (
+          <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
+            <p className="text-gray-600 text-lg">
+              Cargando la línea de tiempo...
+            </p>
+          </div>
+        ) : status === "error" ? (
+          <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
+            <p className="text-red-600 text-lg">Error al cargar los datos</p>
+          </div>
+        ) : allItems.length > 0 ? (
+          <>
+            <Chrono
+              disableToolbar
+              items={allItems}
+              cardHeight={300}
+              mode="VERTICAL_ALTERNATING"
+            >
+              {customCards}
+            </Chrono>
+            <div ref={ref}></div>
+            {isFetchingNextPage && (
+              <p className="mt-4 text-gray-600">Cargando más elementos...</p>
+            )}
+          </>
+        ) : (
+          <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
+            <p className="text-gray-600 text-lg">
+              No hay elementos para mostrar
+            </p>
+          </div>
+        )}
+      </section>
+    </main>
   );
 }

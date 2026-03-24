@@ -29,13 +29,13 @@ export default function AppRouter() {
       {/* Sitio general */}
       <Route path="/" element={<HomePage />} />
       <Route path="/collections" element={<BooksPage />} />
-      <Route path="/manuales" element={<ManualsPage />} />
-      <Route path="/textos-escolares" element={<SchoolTextsPage />} />
+      {/* <Route path="/manuales" element={<ManualsPage />} /> */}
+      {/* <Route path="/textos-escolares" element={<SchoolTextsPage />} /> */}
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/results" element={<SearchResultsPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       {/* Landing con todas las revistas */}
-      <Route path="/revistas" element={<MagazinePage />} />
+      {/* <Route path="/revistas" element={<MagazinePage />} /> */}
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
       <Route
