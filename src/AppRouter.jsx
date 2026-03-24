@@ -4,9 +4,11 @@ import { Route, Routes } from "react-router-dom";
 import BooksPage from "./pages/BooksPage";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
-import SearchResultsPage from "./pages/SearchResultsPage"; // página de resultados de búsqueda
+import SearchResultsPage from "./pages/SearchResultsPage";
+import GalleryPage from "./pages/GalleryPage";
+import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
 
-/* ——— TEORÍA Y PRAXIS (layout + secciones) ——— */
+/* ——— Revistas (layout + secciones) ——— */
 import DiaLogosIndex from "./pages/magazines/dia-logos/index";
 import TP_Layout from "./pages/magazines/teoria-y-praxis/Layout";
 import TP_About from "./pages/magazines/teoria-y-praxis/MagazineAbout";
@@ -16,23 +18,15 @@ import TP_EditorialBoard from "./pages/magazines/teoria-y-praxis/MagazineEditori
 import TP_EditorialPolicy from "./pages/magazines/teoria-y-praxis/MagazineEditorialPolicy";
 import TP_PublicationStandards from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
 
-/* ——— PÁGINA DE DETALLE DE REVISTA ——— */
-import GalleryPage from "./pages/GalleryPage";
-import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
-
 export default function AppRouter() {
   return (
     <Routes>
       {/* Sitio general */}
       <Route path="/" element={<HomePage />} />
       <Route path="/collections" element={<BooksPage />} />
-      {/* <Route path="/manuales" element={<ManualsPage />} /> */}
-      {/* <Route path="/textos-escolares" element={<SchoolTextsPage />} /> */}
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/results" element={<SearchResultsPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
-      {/* Landing con todas las revistas */}
-      {/* <Route path="/revistas" element={<MagazinePage />} /> */}
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
       <Route
