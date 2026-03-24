@@ -1,27 +1,24 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 /* Páginas generales */
-import HomePage from "./pages/HomePage";
 import BooksPage from "./pages/BooksPage";
-import ManualsPage from "./pages/ManualsPage";
-import SchoolTextsPage from "./pages/SchoolTextsPage";
 import ContactPage from "./pages/ContactPage";
-import MagazinePage from "./pages/MagazinePage"; // landing con todas las revistas
+import HomePage from "./pages/HomePage";
 import SearchResultsPage from "./pages/SearchResultsPage"; // página de resultados de búsqueda
 
 /* ——— TEORÍA Y PRAXIS (layout + secciones) ——— */
-import TP_Layout from "./pages/magazines/teoria-y-praxis/Layout";
-import TP_EditorialPolicy from "./pages/magazines/teoria-y-praxis/MagazineEditorialPolicy";
-import TP_About from "./pages/magazines/teoria-y-praxis/MagazineAbout";
-import TP_Archive from "./pages/magazines/teoria-y-praxis/MagazineArchive";
-import TP_AcceptanceProcess from "./pages/magazines/teoria-y-praxis/MagazineAcceptanceProcess";
-import TP_PublicationStandards from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
-import TP_EditorialBoard from "./pages/magazines/teoria-y-praxis/MagazineEditorialBoard";
 import DiaLogosIndex from "./pages/magazines/dia-logos/index";
+import TP_Layout from "./pages/magazines/teoria-y-praxis/Layout";
+import TP_About from "./pages/magazines/teoria-y-praxis/MagazineAbout";
+import TP_AcceptanceProcess from "./pages/magazines/teoria-y-praxis/MagazineAcceptanceProcess";
+import TP_Archive from "./pages/magazines/teoria-y-praxis/MagazineArchive";
+import TP_EditorialBoard from "./pages/magazines/teoria-y-praxis/MagazineEditorialBoard";
+import TP_EditorialPolicy from "./pages/magazines/teoria-y-praxis/MagazineEditorialPolicy";
+import TP_PublicationStandards from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
 
 /* ——— PÁGINA DE DETALLE DE REVISTA ——— */
-import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
 import GalleryPage from "./pages/GalleryPage";
+import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
 
 export default function AppRouter() {
   return (
