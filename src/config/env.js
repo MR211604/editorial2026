@@ -5,5 +5,5 @@ export const env = {
   FILES_URL: import.meta.env.VITE_EDITORIAL_FILES_URL || "/editorial_files",
   CURATOR_API_URL:
     import.meta.env.VITE_CURATOR_API_URL || "https://api.curator.io/v1/feeds/",
-  CURATOR_API_KEY: import.meta.env.VITE_CURATOR_API_KEY || null,
+  CURATOR_FEED_ID: import.meta.env.VITE_CURATOR_FEED_ID || null,
 };

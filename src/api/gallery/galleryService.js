@@ -9,7 +9,7 @@ export const getInstagramPosts = async () => {
         "posts",
         null,
         "GET",
-        `${env.CURATOR_API_URL}/${env.CURATOR_API_KEY}`,
+        `${env.CURATOR_API_URL}/${env.CURATOR_FEED_ID}`,
       ),
     "Error fetching posts",
     "Error obteniendo publicaciones de Instagram",
