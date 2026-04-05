@@ -10,7 +10,7 @@ export default function DiaLogosIndex() {
   const [page, setPage] = useState(1);
   const { category, isLoading } = useCategory("dia-logos");
   const { publishings, isLoading: isPublishingsLoading } = useGetPublishings(
-    category?.data?.id,
+    category?.data?.idCategory,
     "Revista",
     page,
     9,
@@ -59,7 +59,7 @@ export default function DiaLogosIndex() {
         <div className="grid grid-cols-1 xs:grid-cols-2 xl:grid-cols-3 gap-14 w-full mb-16 px-4">
           {publishings?.data?.map((publishing) => (
             <div
-              key={publishing.id}
+              key={publishing.idPublishing}
               className="flex items-start bg-white rounded-lg shadow-md p-4"
             >
               {publishing.cover ? (

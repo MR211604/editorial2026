@@ -32,7 +32,7 @@ export default function BooksPage() {
 
       const cards = publishings.map((publishing, index) => (
         <BookCard
-          key={publishing.id || index}
+          key={publishing.idPublishing || index}
           title={publishing.title}
           authors={
             publishing.authors

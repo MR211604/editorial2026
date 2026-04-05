@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import DefaultLayout from "../components/layouts/DefaultLayout";
 import SearchInput from "../components/ui/SearchInput";
 import CustomBookSlider from "../components/ui/CustomBookSlider";
+import { useRef } from "react";
+import { useGetLastActiveBanner } from "../api/hooks/useBanners";
+import Loader from "../components/ui/Loader";
+import { extractYouTubeId } from "../helpers/banner";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
@@ -30,6 +33,9 @@ const links = [
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const ytRef = useRef(null);
+  const { lastActiveBanner, isLastActiveBannerLoading } =
+    useGetLastActiveBanner();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,8 +44,25 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  const videoId = lastActiveBanner
+    ? extractYouTubeId(lastActiveBanner?.data?.resourceURL)
+    : "";
+
+  useEffect(() => {
+    // Esperamos a que la carga termine y el ref exista
+    if (!isLastActiveBannerLoading && ytRef.current) {
+      // Un ligero retraso asegura que el web component se haya inicializado por completo
+      const timer = setTimeout(() => {
+        if (ytRef.current) {
+          ytRef.current.click();
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLastActiveBannerLoading, videoId]);
+
   return (
-    // <DefaultLayout>
     <div className="bg-white">
       {/* Primera sección */}
       <section className="flex flex-col md:flex-row items-center justify-center gap-10 mt-18 mb-18 max-w-6xl mx-auto">
@@ -81,9 +104,6 @@ export default function HomePage() {
         <CustomBookSlider />
       </section>
 
-      {/* Espacio reducido a 60px */}
-      <div className="h-[60px] w-full bg-white"></div>
-
       {/* Segunda sección */}
       <section className="px-4 md:px-20 py-16 bg-white">
         <div className="max-w-4xl mx-auto space-y-6 text-center">
@@ -120,8 +140,23 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Espacio para el Banner */}
+      <div className="max-w-5xl bg-white align-items-center mx-auto ">
+        {isLastActiveBannerLoading ? (
+          <Loader />
+        ) : (
+          <lite-youtube
+            ref={ytRef}
+            id="test-jsapi"
+            videoid={videoId}
+            posterquality="maxresdefault"
+            params="autoplay=1&mute=1&loop=1&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+          ></lite-youtube>
+        )}
+      </div>
+
       <section>
-        <div className="max-w-4xl mx-auto space-y-6 text-center">
+        <div className="max-w-4xl mx-auto pt-20 text-center">
           <h2 className="text-3xl font-semibold text-[#0c65af] mb-2">
             Detalles de publicación
           </h2>
@@ -138,6 +173,5 @@ export default function HomePage() {
         </nav>
       </section>
     </div>
-    // </DefaultLayout>
   );
 }

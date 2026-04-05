@@ -113,7 +113,7 @@ export default function SearchResultsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {results.libros.map((libro) => (
                   <div
-                    key={libro.id}
+                    key={libro.idPublishing}
                     className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-200"
                   >
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -170,7 +170,7 @@ export default function SearchResultsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {results.revistas.map((revista) => (
                   <div
-                    key={revista.id}
+                    key={revista.idPublishing}
                     className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-200"
                   >
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -225,7 +225,7 @@ export default function SearchResultsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {results.articulos.map((articulo) => (
                   <div
-                    key={articulo.id}
+                    key={articulo.idPublishingDetail}
                     className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-200"
                   >
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">

@@ -60,34 +60,32 @@ const mockItems = [
 export default function CientificaIndex() {
   /*  Permite añadir items en caliente si lo necesitas */
   const [items] = useState(
-    mockItems.map((item, idx) => ({ ...item, id: `mock-${idx}` }))
+    mockItems.map((item, idx) => ({ ...item, id: `mock-${idx}` })),
   );
 
   return (
-    <DefaultLayout>
-      <main className="p-4 mt-16">
-        <section className="flex flex-col items-center">
-          <h1 className="text-3xl text-sky-700 font-bold mb-8">
-            LÍNEA DE TIEMPO &quot;CIENTÍFICA&quot;
-          </h1>
+    <main className="p-4 mt-16">
+      <section className="flex flex-col items-center">
+        <h1 className="text-3xl text-sky-700 font-bold mb-8">
+          LÍNEA DE TIEMPO &quot;CIENTÍFICA&quot;
+        </h1>
 
-          {items.length ? (
-            <Chrono
-              items={items}
-              // parseDetailsAsHTML={true}
-              mode="VERTICAL_ALTERNATING"
-              disableToolbar
-              slideShow={false}
-            />
-          ) : (
-            <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
-              <p className="text-gray-600 text-lg">
-                No hay elementos para mostrar
-              </p>
-            </div>
-          )}
-        </section>
-      </main>
-    </DefaultLayout>
+        {items.length ? (
+          <Chrono
+            items={items}
+            // parseDetailsAsHTML={true}
+            mode="VERTICAL_ALTERNATING"
+            disableToolbar
+            slideShow={false}
+          />
+        ) : (
+          <div className="w-full max-w-4xl bg-gray-100 rounded-lg p-8 text-center">
+            <p className="text-gray-600 text-lg">
+              No hay elementos para mostrar
+            </p>
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
