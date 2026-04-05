@@ -1,5 +1,4 @@
 import { useInstagramPosts } from "../api/hooks/useGallery";
-import DefaultLayout from "../components/layouts/DefaultLayout";
 
 export default function GalleryPage() {
   const { allInstagramPosts, isAllInstagramPostsLoading } = useInstagramPosts();
