@@ -6,18 +6,18 @@ export const useFilteredCategories = ({ categoryType }) => {
 
   // Encontrar el tipo de categoría que coincide con el categoryType proporcionado
   const matchedCategoryType = allCategoryTypes?.data?.find(
-    (type) => type.name === categoryType
+    (type) => type.name === categoryType,
   );
 
   // Filtar las categorías según el tipo de categoría, agregando adicionalmente "Sin Categoria"
   const filteredCategories = allCategories?.data
     ?.filter((category) => {
-      return category.category_type === matchedCategoryType?.id;
+      return category.category_type === matchedCategoryType?.idCategoryType;
     })
     .map((category) => {
       // Filtrar hijos activos
       const activeChildren = category.children_recursive.filter(
-        (child) => child.state === 1
+        (child) => child.state === 1,
       );
 
       // Si la categoría padre está activa O tiene hijos activos
