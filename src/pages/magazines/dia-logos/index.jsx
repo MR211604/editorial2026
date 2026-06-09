@@ -8,7 +8,7 @@ import { getPublishingImagePath } from "../../../helpers/imagePath";
 
 export default function DiaLogosIndex() {
   const [page, setPage] = useState(1);
-  const { category, isLoading } = useCategory("dia-logos");
+  const { category, isLoading } = useCategory("dialogos");
   const { publishings, isLoading: isPublishingsLoading } = useGetPublishings(
     category?.data?.idCategory,
     "Revista",

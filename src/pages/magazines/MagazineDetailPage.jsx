@@ -164,7 +164,7 @@ export default function MagazineDetailPage() {
               {magazine.publish_code && (
                 <div className="flex items-start">
                   <span className="font-semibold text-gray-700 w-32 flex-shrink-0">
-                    Código:
+                    ISSN:
                   </span>
                   <span className="text-gray-600">{magazine.publish_code}</span>
                 </div>

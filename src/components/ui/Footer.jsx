@@ -92,20 +92,27 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex justify-center items-center text-lg mb-1 gap-2">
-            <a href="https://www.facebook.com/EditorialUDB" target="_blank">
-              <img
-                className="size-6 transform transition duration-500 hover:scale-110"
-                src={getImagePath("img/facebookAmarillo.png")}
-                alt="Facebook Icon"
-              />
+          <div className="flex justify-center items-center text-lg mb-1 gap-3">
+            <a
+              href="https://www.facebook.com/EditorialUDB"
+              target="_blank"
+              className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+            >
+              <i className="bi bi-facebook"></i>
             </a>
-            <a href="https://www.instagram.com/udbeditorial" target="_blank">
-              <img
-                className="size-6 transform transition duration-500 hover:scale-110"
-                src={getImagePath("img/instagramAmarillo.png")}
-                alt="Instagram Icon"
-              />
+            <a
+              href="https://www.instagram.com/udbeditorial"
+              target="_blank"
+              className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+            >
+              <i className="bi bi-instagram"></i>
+            </a>
+            <a
+              href="https://www.tiktok.com/@_editorialudb"
+              target="_blank"
+              className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+            >
+              <i className="bi bi-tiktok"></i>
             </a>
           </div>
         </div>

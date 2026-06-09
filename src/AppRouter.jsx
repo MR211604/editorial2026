@@ -47,7 +47,7 @@ export default function AppRouter() {
 
       {/* ——— Dialogos (layout + rutas anidadas) ——— */}
       <Route
-        path="/revistas/dia-logos"
+        path="/revistas/dialogos"
         element={<TP_Layout headerTitle={"Diá-logos"} showPills={false} />}
       >
         <Route index element={<DiaLogosIndex />} />

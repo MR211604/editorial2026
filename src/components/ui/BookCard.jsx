@@ -21,7 +21,7 @@ export default function BookCard({
           <span className="font-semibold">Autor(es):</span> {authors}
         </p>
         <p className="text-xs md:text-md text-gray-600 mb-1">
-          <span className="font-semibold">Código:</span> {code}
+          <span className="font-semibold">ISBN:</span> {code}
         </p>
         <p className="text-xs md:text-md text-gray-600">
           <span className="font-semibold">Páginas:</span> {pages}
