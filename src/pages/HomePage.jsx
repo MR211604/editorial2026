@@ -4,7 +4,7 @@ import CustomBookSlider from "../components/ui/CustomBookSlider";
 import { useRef } from "react";
 import { useGetLastActiveBanner } from "../api/hooks/useBanners";
 import Loader from "../components/ui/Loader";
-import { extractYouTubeId } from "../helpers/banner";
+import { getYouTubeInfo } from "../helpers/banner";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
@@ -44,9 +44,9 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  const videoId = lastActiveBanner
-    ? extractYouTubeId(lastActiveBanner?.data?.resourceURL)
-    : "";
+  const { id: videoId, isShort } = lastActiveBanner
+    ? getYouTubeInfo(lastActiveBanner?.data?.resourceURL)
+    : { id: "", isShort: false };
 
   useEffect(() => {
     // Esperamos a que la carga termine y el ref exista
@@ -140,18 +140,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Espacio para el Banner */}
       <div className="max-w-5xl bg-white align-items-center mx-auto ">
         {isLastActiveBannerLoading ? (
           <Loader />
         ) : (
-          <lite-youtube
-            ref={ytRef}
-            id="test-jsapi"
-            videoid={videoId}
-            posterquality="maxresdefault"
-            params="autoplay=1&mute=1&loop=1&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
-          ></lite-youtube>
+          videoId && (
+            <lite-youtube
+              ref={ytRef}
+              id="test-jsapi"
+              videoid={videoId}
+              posterquality="maxresdefault"
+              short={isShort}
+              params="autoplay=1&mute=1&loop=1&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+            ></lite-youtube>
+          )
         )}
       </div>
 
