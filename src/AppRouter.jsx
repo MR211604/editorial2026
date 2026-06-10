@@ -3,20 +3,17 @@ import { Route, Routes } from "react-router-dom";
 /* Páginas generales */
 import BooksPage from "./pages/BooksPage";
 import ContactPage from "./pages/ContactPage";
-import HomePage from "./pages/HomePage";
-import SearchResultsPage from "./pages/SearchResultsPage";
 import GalleryPage from "./pages/GalleryPage";
+import HomePage from "./pages/HomePage";
 import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
+import SearchResultsPage from "./pages/SearchResultsPage";
 
 /* ——— Revistas (layout + secciones) ——— */
-import DiaLogosIndex from "./pages/magazines/dia-logos/index";
-import TP_Layout from "./pages/magazines/teoria-y-praxis/Layout";
-import TP_About from "./pages/magazines/teoria-y-praxis/MagazineAbout";
-import TP_AcceptanceProcess from "./pages/magazines/teoria-y-praxis/MagazineAcceptanceProcess";
-import TP_Archive from "./pages/magazines/teoria-y-praxis/MagazineArchive";
-import TP_EditorialBoard from "./pages/magazines/teoria-y-praxis/MagazineEditorialBoard";
-import TP_EditorialPolicy from "./pages/magazines/teoria-y-praxis/MagazineEditorialPolicy";
-import TP_PublicationStandards from "./pages/magazines/teoria-y-praxis/MagazinePublicationStandards";
+import DialogosArchive from "./pages/magazines/dia-logos/DialogosArchive";
+import DialogosLayout from "./pages/magazines/dia-logos/DialogosLayout";
+import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
+import TeoriaYPraxisAbout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisAbout";
+import TeoriaYPraxisArchive from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisArchive";
 
 export default function AppRouter() {
   return (
@@ -31,26 +28,27 @@ export default function AppRouter() {
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
       <Route
         path="/revistas/teoria_y_praxis"
-        element={<TP_Layout headerTitle={"Teoría y práxis"} />}
+        element={<TeoriaYPraxisLayout headerTitle={"Teoría y práxis"} />}
       >
-        <Route index element={<TP_Archive />} />
-        <Route path="about" element={<TP_About />} />
-        <Route path="editorial-policy" element={<TP_EditorialPolicy />} />
-        <Route path="archive" element={<TP_Archive />} />
-        <Route path="acceptance-process" element={<TP_AcceptanceProcess />} />
-        <Route
+        <Route index element={<TeoriaYPraxisArchive />} />
+        <Route path="about" element={<TeoriaYPraxisAbout />} />
+        <Route path="archive" element={<TeoriaYPraxisArchive />} />
+        {/* <Route path="editorial-policy" element={<TP_EditorialPolicy />} /> */}
+        {/* <Route path="acceptance-process" element={<TP_AcceptanceProcess />} /> */}
+        {/* <Route
           path="publication-standards"
           element={<TP_PublicationStandards />}
-        />
-        <Route path="editorial-board" element={<TP_EditorialBoard />} />
+        /> */}
+        {/* <Route path="editorial-board" element={<TP_EditorialBoard />} /> */}
       </Route>
 
       {/* ——— Dialogos (layout + rutas anidadas) ——— */}
       <Route
         path="/revistas/dialogos"
-        element={<TP_Layout headerTitle={"Diá-logos"} showPills={false} />}
+        element={<DialogosLayout headerTitle={"Diá-logos"} />}
       >
-        <Route index element={<DiaLogosIndex />} />
+        <Route index element={<DialogosArchive />} />
+        <Route path="archive" element={<DialogosArchive />} />
       </Route>
 
       {/* ——— Página de detalle de revista individual ——— */}
