@@ -6,6 +6,7 @@ import BookDetailPage from "./pages/books/BookDetailPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import HomePage from "./pages/HomePage";
+import LocationsPage from "./pages/LocationsPage";
 /* ——— Revistas (layout + secciones) ——— */
 import DialogosArchive from "./pages/magazines/dia-logos/DialogosArchive";
 import DialogosLayout from "./pages/magazines/dia-logos/DialogosLayout";
@@ -24,6 +25,8 @@ export default function AppRouter() {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/results" element={<SearchResultsPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
+      <Route path="/locations" element={<LocationsPage />} />
+      <Route path="/ubicaciones" element={<LocationsPage />} />
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
       <Route

@@ -54,6 +54,14 @@ export default function Footer() {
                 Galeria
               </Link>
             </li>
+            <li>
+              <Link
+                to="/locations"
+                className="hover:underline hover:text-cyan-50 transition"
+              >
+                Ubicaciones
+              </Link>
+            </li>
           </ul>
         </div>
 
