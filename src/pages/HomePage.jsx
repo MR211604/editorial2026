@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
-import SearchInput from "../components/ui/SearchInput";
-import CustomBookSlider from "../components/ui/CustomBookSlider";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGetLastActiveBanner } from "../api/hooks/useBanners";
+import CustomBookSlider from "../components/ui/CustomBookSlider";
 import Loader from "../components/ui/Loader";
+import SearchInput from "../components/ui/SearchInput";
 import { getYouTubeInfo } from "../helpers/banner";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
-  "Aca va texto 2",
-  "Texto 3 ",
 ];
 
 const links = [

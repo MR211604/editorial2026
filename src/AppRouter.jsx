@@ -2,19 +2,18 @@ import { Route, Routes } from "react-router-dom";
 
 /* Páginas generales */
 import BooksPage from "./pages/BooksPage";
+import BookDetailPage from "./pages/books/BookDetailPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import HomePage from "./pages/HomePage";
-import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
-import SearchResultsPage from "./pages/SearchResultsPage";
-
 /* ——— Revistas (layout + secciones) ——— */
 import DialogosArchive from "./pages/magazines/dia-logos/DialogosArchive";
 import DialogosLayout from "./pages/magazines/dia-logos/DialogosLayout";
-import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
+import MagazineDetailPage from "./pages/magazines/MagazineDetailPage";
 import TeoriaYPraxisAbout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisAbout";
 import TeoriaYPraxisArchive from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisArchive";
-import BookDetailPage from "./pages/books/BookDetailPage";
+import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
+import SearchResultsPage from "./pages/SearchResultsPage";
 
 export default function AppRouter() {
   return (
@@ -57,7 +56,6 @@ export default function AppRouter() {
 
       {/* Página de detalle de libro individual */}
       <Route path="/libros/:bookURL" element={<BookDetailPage />} />
-
     </Routes>
   );
 }
