@@ -1,9 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import CustomLink from "./CustomLink";
-import SearchInput from "./SearchInput";
-import { useState, useEffect, useRef } from "react";
 import { getImagePath } from "../../helpers/imagePath";
 import { useFilteredCategories } from "../hooks/useFilteredCategories";
+import CustomLink from "./CustomLink";
+import SearchInput from "./SearchInput";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,19 +50,14 @@ export default function Navbar() {
     categoryType: "Revista",
   });
 
-  const magazinesData = filteredCategories
-    ?.map((category) => {
-      if (
-        category.children_recursive &&
-        category.children_recursive.length > 0
-      ) {
-        return category.children_recursive.map((child) => ({
-          to: `/revistas/${child.URL}`,
-          label: child.title,
-        }));
-      }
-    })
-    .flat();
+  const magazinesData = filteredCategories?.flatMap((category) => {
+    if (category.children_recursive && category.children_recursive.length > 0) {
+      return category.children_recursive.map((child) => ({
+        to: `/revistas/${child.URL}`,
+        label: child.title,
+      }));
+    }
+  });
 
   return (
     <nav className="bg-white relative w-full z-20 top-0 start-0">

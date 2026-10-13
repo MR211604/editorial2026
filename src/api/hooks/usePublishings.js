@@ -1,4 +1,4 @@
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import {
   getPublishingByURL,
   getPublishings,
@@ -21,7 +21,7 @@ export const useGetPublishings = (
   categoryId,
   publishingType,
   page = 1,
-  limit = 10
+  limit = 10,
 ) => {
   const { data: publishings, isLoading } = useQuery({
     queryKey: ["publishings", categoryId, publishingType, page, limit],
@@ -49,12 +49,19 @@ export const useGetPublishingByURL = (publishingURL) => {
 export const useGetInfinitePublishings = (
   categoryId,
   publishingType,
-  limit = 10
+  limit = 10,
+  is_archived,
 ) => {
   return useInfiniteQuery({
-    queryKey: ["infinitePublishings", categoryId, publishingType, limit],
+    queryKey: [
+      "infinitePublishings",
+      categoryId,
+      publishingType,
+      limit,
+      is_archived,
+    ],
     queryFn: ({ pageParam = 1 }) =>
-      getPublishings(categoryId, publishingType, pageParam, limit),
+      getPublishings(categoryId, publishingType, pageParam, limit, is_archived),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const { current_page, last_page } = lastPage?.pagination || {};

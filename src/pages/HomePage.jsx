@@ -108,7 +108,7 @@ export default function HomePage() {
       <section className="px-4 md:px-20 py-16 bg-white">
         <div className="max-w-4xl mx-auto space-y-6 text-center">
           <h2 className="text-3xl font-semibold text-[#0c65af] mb-2">
-            Editorial Don Bosco
+            Editorial Universidad Don Bosco
           </h2>
 
           <p className="text-black leading-relaxed">

@@ -1,10 +1,8 @@
-import DefaultLayout from "../components/layouts/DefaultLayout";
-import { useInView } from "react-intersection-observer";
-import { useEffect, useState, useCallback } from "react";
-import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
+import { useCallback, useEffect, useState } from "react";
 import { Chrono } from "react-chrono";
+import { useInView } from "react-intersection-observer";
+import { useGetInfinitePublishings } from "../api/hooks/usePublishings";
 import BookCard from "../components/ui/BookCard";
-import { getImagePath } from "../helpers/imagePath";
 
 export default function BooksPage() {
   const { ref, inView } = useInView();
@@ -18,7 +16,7 @@ export default function BooksPage() {
     isFetchingNextPage,
     hasNextPage,
     status,
-  } = useGetInfinitePublishings("", "Libro", 10);
+  } = useGetInfinitePublishings("", "Libro", 10, 0);
 
   useEffect(() => {
     if (data?.pages) {
@@ -30,9 +28,12 @@ export default function BooksPage() {
           : publishing.volume,
       }));
 
+      console.log(publishings);
+
       const cards = publishings.map((publishing, index) => (
         <BookCard
           key={publishing.idPublishing || index}
+          publishingURL={publishing.URL}
           title={publishing.title}
           authors={
             publishing.authors
@@ -41,7 +42,7 @@ export default function BooksPage() {
           }
           code={publishing.publish_code || "N/A"}
           pages={publishing.pages || "N/A"}
-          imageUrl={getImagePath("/img/Sendas-feministas.jpg")}
+          publishing={publishing}
           imageLeft={(index + 1) % 2 === 0}
         />
       ));

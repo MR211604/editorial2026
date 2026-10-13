@@ -24,7 +24,7 @@ export default function Footer() {
           <ul className="list-none text-cyan-100 mt-1">
             <li>
               <Link
-                to="/magazines"
+                to="/revistas/teoria_y_praxis"
                 className="hover:underline hover:text-cyan-50 transition"
               >
                 Revistas
@@ -35,23 +35,23 @@ export default function Footer() {
                 to="/collections"
                 className="hover:underline hover:text-cyan-50 transition"
               >
-                Colecciones
+                Libros
               </Link>
             </li>
             <li>
               <Link
-                to="/manuales"
+                to="/contact"
                 className="hover:underline hover:text-cyan-50 transition"
               >
-                Manuales
+                Contacto
               </Link>
             </li>
             <li>
               <Link
-                to="/textos-escolares"
+                to="/gallery"
                 className="hover:underline hover:text-cyan-50 transition"
               >
-                Textos escolares
+                Galeria
               </Link>
             </li>
           </ul>

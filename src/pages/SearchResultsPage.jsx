@@ -1,6 +1,6 @@
-import { useSearchParams, Link } from "react-router-dom";
-import DefaultLayout from "../components/layouts/DefaultLayout";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSearchPublishings } from "../api/hooks/usePublishings";
+import DefaultLayout from "../components/layouts/DefaultLayout";
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams();
@@ -119,9 +119,9 @@ export default function SearchResultsPage() {
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">
                       {libro.title}
                     </h3>
-                    {libro.resource_URL && (
+                    {libro.URL && (
                       <a
-                        href={libro.resource_URL}
+                        href={`/libros/${libro.URL}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium"

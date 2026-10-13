@@ -14,6 +14,7 @@ import DialogosLayout from "./pages/magazines/dia-logos/DialogosLayout";
 import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
 import TeoriaYPraxisAbout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisAbout";
 import TeoriaYPraxisArchive from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisArchive";
+import BookDetailPage from "./pages/books/BookDetailPage";
 
 export default function AppRouter() {
   return (
@@ -53,6 +54,10 @@ export default function AppRouter() {
 
       {/* ——— Página de detalle de revista individual ——— */}
       <Route path="/revistas/:magazineURL" element={<MagazineDetailPage />} />
+
+      {/* Página de detalle de libro individual */}
+      <Route path="/libros/:bookURL" element={<BookDetailPage />} />
+
     </Routes>
   );
 }
