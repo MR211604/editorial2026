@@ -121,7 +121,7 @@ export default function SearchResultsPage() {
                     </h3>
                     {libro.URL && (
                       <a
-                        href={`${env.BASE_URL}/libros/${libro.URL}`}
+                        href={`${env.BASE_URL}libros/${libro.URL}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium"
@@ -178,7 +178,7 @@ export default function SearchResultsPage() {
                     </h3>
                     {revista.URL && (
                       <Link
-                        to={`${env.BASE_URL}/revistas/${revista.URL}`}
+                        to={`${env.BASE_URL}revistas/${revista.URL}`}
                         className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium"
                       >
                         Ver revista
