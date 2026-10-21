@@ -1,5 +1,10 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
+import {
+  getBooks,
   getPublishingByURL,
   getPublishings,
   globalSearch,
@@ -31,6 +36,21 @@ export const useGetPublishings = (
   return {
     publishings,
     isLoading,
+  };
+};
+
+export const useGetBooks = ({ page, limit, search, categoryId }) => {
+  const { data: books, isLoading, isError, isPlaceholderData } = useQuery({
+    queryKey: ["books", page, limit, search, categoryId],
+    queryFn: () => getBooks({ page, limit, search, categoryId }),
+    placeholderData: keepPreviousData,
+  });
+
+  return {
+    books,
+    isLoading,
+    isError,
+    isPlaceholderData,
   };
 };
 

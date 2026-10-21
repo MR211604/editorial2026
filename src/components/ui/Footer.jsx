@@ -59,7 +59,7 @@ export default function Footer() {
                 to="/locations"
                 className="hover:underline hover:text-cyan-50 transition"
               >
-                Ubicaciones
+                Dónde comprar
               </Link>
             </li>
           </ul>
@@ -82,7 +82,7 @@ export default function Footer() {
                   />
                 </svg>
               </span>
-              <span>Teléfono: (503) 2251-8200</span>
+              <span>Teléfono: (503) 2251-8212</span>
             </div>
             <div className="flex text-sm items-center">
               <span className="text-sm mr-1.5">
@@ -105,6 +105,7 @@ export default function Footer() {
               href="https://www.facebook.com/EditorialUDB"
               target="_blank"
               className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+              rel="noopener"
             >
               <i className="bi bi-facebook"></i>
             </a>
@@ -112,6 +113,7 @@ export default function Footer() {
               href="https://www.instagram.com/udbeditorial"
               target="_blank"
               className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+              rel="noopener"
             >
               <i className="bi bi-instagram"></i>
             </a>
@@ -119,6 +121,7 @@ export default function Footer() {
               href="https://www.tiktok.com/@_editorialudb"
               target="_blank"
               className="bg-yellow-400 text-blue-600 rounded-full size-8 flex items-center justify-center transform transition duration-500 hover:scale-110"
+              rel="noopener"
             >
               <i className="bi bi-tiktok"></i>
             </a>

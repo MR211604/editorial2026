@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useGetLastActiveBanner } from "../api/hooks/useBanners";
+import { useGetActiveBanner } from "../api/hooks/useBanners";
 import CustomBookSlider from "../components/ui/CustomBookSlider";
 import Loader from "../components/ui/Loader";
 import SearchInput from "../components/ui/SearchInput";
-import { getYouTubeInfo } from "../helpers/banner";
+import { getVideoEmbed } from "../helpers/banner";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
@@ -31,8 +31,7 @@ const links = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ytRef = useRef(null);
-  const { lastActiveBanner, isLastActiveBannerLoading } =
-    useGetLastActiveBanner();
+  const { activeBanner, isActiveBannerLoading } = useGetActiveBanner();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,13 +40,11 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  const { id: videoId, isShort } = lastActiveBanner
-    ? getYouTubeInfo(lastActiveBanner?.data?.resourceURL)
-    : { id: "", isShort: false };
+  const videoEmbed = getVideoEmbed(activeBanner?.data?.resourceURL);
 
   useEffect(() => {
     // Esperamos a que la carga termine y el ref exista
-    if (!isLastActiveBannerLoading && ytRef.current) {
+    if (!isActiveBannerLoading && videoEmbed?.provider === "youtube" && ytRef.current) {
       // Un ligero retraso asegura que el web component se haya inicializado por completo
       const timer = setTimeout(() => {
         if (ytRef.current) {
@@ -57,7 +54,7 @@ export default function HomePage() {
 
       return () => clearTimeout(timer);
     }
-  }, [isLastActiveBannerLoading, videoId]);
+  }, [isActiveBannerLoading, videoEmbed?.provider, videoEmbed?.id]);
 
   return (
     <div className="bg-white">
@@ -68,7 +65,7 @@ export default function HomePage() {
             El verdadero espacio de aprendizaje
           </h1>
           <p className="text-xl text-black">
-            <strong>Bienvenido a la editorial UDB</strong>
+            <strong>Bienvenido a la Editorial UDB</strong>
           </p>
 
           <div className="max-w-xl relative">
@@ -76,7 +73,7 @@ export default function HomePage() {
               <SearchInput
                 id="homepage-search"
                 className="w-full py-3 pl-4 pr-12 bg-transparent border-none rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
-                placeholder="¿Qué estás buscando?"
+                placeholder="Buscar en libros..."
               />
               <div className="absolute right-3 top-2.5 w-7 h-7 bg-[#0c65af] rounded-full flex items-center justify-center shadow-sm">
                 <svg
@@ -113,7 +110,7 @@ export default function HomePage() {
           </p>
 
           <p className="text-gray-700">
-            adscrita a la Rectoría que nació para dar respuesta a dos
+            Adscrita a la Rectoría que nació para dar respuesta a dos
             necesidades imperiosas
           </p>
 
@@ -138,19 +135,37 @@ export default function HomePage() {
       </section>
 
       <div className="max-w-5xl bg-white align-items-center mx-auto ">
-        {isLastActiveBannerLoading ? (
+        {isActiveBannerLoading ? (
           <Loader />
         ) : (
-          videoId && (
+          videoEmbed?.provider === "youtube" ? (
             <lite-youtube
               ref={ytRef}
-              id="test-jsapi"
-              videoid={videoId}
+              videoid={videoEmbed.id}
               posterquality="maxresdefault"
-              short={isShort}
+              short={videoEmbed.isShort}
               params="autoplay=1&mute=1&loop=1&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
             ></lite-youtube>
-          )
+          ) : videoEmbed ? (
+            <div
+              className={`mx-auto overflow-hidden ${
+                videoEmbed.provider === "tiktok"
+                  ? "aspect-[9/16] max-w-[380px]"
+                  : videoEmbed.provider === "instagram"
+                    ? "h-[650px] max-w-[540px]"
+                    : "aspect-video max-w-[800px]"
+              }`}
+            >
+              <iframe
+                title={`Video de ${videoEmbed.provider}`}
+                src={videoEmbed.src}
+                className="h-full w-full border-0"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          ) : null
         )}
       </div>
 

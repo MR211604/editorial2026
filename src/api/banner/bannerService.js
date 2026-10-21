@@ -1,10 +1,10 @@
 import { handleApiCall } from "../../helpers/handleApi";
 import { fetchWithoutToken } from "../fetch";
 
-export const getLastActiveBanner = async () => {
+export const getActiveBanner = async () => {
   return handleApiCall(
-    async () => fetchWithoutToken(`api/banners/getLastActiveBanner`),
-    "Error fetching last active banner",
-    "Error obteniendo el último banner activo",
+    async () => fetchWithoutToken(`api/banners/getActiveBanner`),
+    "Error fetching active banner",
+    "Error obteniendo el video activo",
   );
 };

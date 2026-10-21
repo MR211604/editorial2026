@@ -1,17 +1,17 @@
-import { useSearch } from '../hooks/useSearch';
+import { useSearch } from "../hooks/useSearch";
 
 export default function SearchInput({
-  id = 'search-input',
-  placeholder = '¿Qué estás buscando?',
-  className = '',
+  id = "search-input",
+  placeholder = "Buscar...",
+  className = "",
   onSearch,
   delay = 500,
-  minChars = 3
+  minChars = 3,
 }) {
   const { searchValue, setSearchValue, handleKeyDown } = useSearch({
     delay,
     minChars,
-    onSearch
+    onSearch,
   });
 
   return (

@@ -102,7 +102,7 @@ export default function Navbar() {
               </div>
               <SearchInput
                 id="default-search-mobile"
-                placeholder="¿Qué estás buscando?"
+                placeholder="Buscar en libros..."
                 onSearch={handleSearchComplete}
                 className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
               />
@@ -140,115 +140,17 @@ export default function Navbar() {
         >
           <ul className="flex flex-col p-4 xl:p-0 mt-4 font-medium border border-gray-100 rounded-xl bg-gray-50 xl:space-x-8 rtl:space-x-reverse xl:flex-row xl:mt-0 xl:border-0 xl:bg-white">
             {/* ——— REVISTAS ——— */}
-            <li
-              className="relative group"
-              onMouseEnter={() => {
-                clearTimeout(window.hideSubmenuTimeout);
-                setIsMagazinesHovered(true);
-              }}
-              onMouseLeave={() => {
-                window.hideSubmenuTimeout = setTimeout(
-                  () => setIsMagazinesHovered(false),
-                  200,
-                );
-              }}
-            >
-              <div className="flex items-center">
-                {/* TEXTO SIN ENLACE */}
-                <span
-                  ref={linkRef}
-                  className={`cursor-default font-bold px-3 text-gray-900 hover:text-blue-600 select-none my-2 xl:my-0`}
-                >
-                  Revistas
-                </span>
-
-                {/* flecha – mobile */}
-                <button
-                  onClick={toggleMobileSubmenu}
-                  className="xl:hidden focus:outline-none"
-                >
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isMobileSubmenuOpen
-                        ? "text-blue-600 rotate-180"
-                        : "text-gray-500"
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                {/* flecha – desktop */}
-                <svg
-                  className={`hidden xl:block w-4 h-4 transition-transform duration-200 ${
-                    isMagazinesHovered
-                      ? "text-blue-600 rotate-180"
-                      : "text-gray-500"
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-
-              {/* Submenú Desktop */}
-              <div
-                ref={submenuRef}
-                className={`hidden xl:block absolute left-0 mt-2 w-56 bg-gray-50 rounded-lg shadow-lg z-30 border border-gray-300 origin-top transition-all duration-200 ${
-                  isMagazinesHovered
-                    ? "opacity-100 scale-y-100"
-                    : "opacity-0 scale-y-95 pointer-events-none"
-                }`}
-              >
-                <div className="space-y-1">
-                  {magazinesData?.map(({ to, label }) => (
-                    <CustomLink
-                      key={to}
-                      to={to}
-                      className="flex items-center ml-3 px-4 my-4 text-sm  transition-colors duration-150 text-gray-600"
-                      onClick={() => setIsMagazinesHovered(false)}
-                    >
-                      {label}
-                    </CustomLink>
-                  ))}
-                </div>
-              </div>
-
-              {/* Submenú Mobile */}
-              {isMenuOpen && isMobileSubmenuOpen && (
-                <div className="xl:hidden pl-6 mt-2 space-y-2 bg-gray-200/60 rounded-md py-2">
-                  {magazinesData?.map(({ to, label }) => (
-                    <CustomLink key={to} to={to} onClick={toggleMenu}>
-                      <span className="w-1.5 h-1.5 mr-2 bg-blue-600 rounded-full" />
-                      {label}
-                    </CustomLink>
-                  ))}
-                </div>
-              )}
-            </li>
 
             {/* otros enlaces principales */}
             <CustomLink to="/collections">Libros</CustomLink>
+            <CustomLink to="https://www.revistas.udb.edu.sv/">
+              Revistas
+            </CustomLink>
             {/* <CustomLink to="/manuales">Manuales</CustomLink> */}
             {/* <CustomLink to="/textos-escolares">Textos Escolares</CustomLink> */}
             <CustomLink to="/contact">Contacto</CustomLink>
             <CustomLink to="/gallery">Galeria</CustomLink>
-            <CustomLink to="/locations">Ubicaciones</CustomLink>
+            <CustomLink to="/locations">Dónde comprar</CustomLink>
 
             {/* buscador móvil */}
             <div className="mt-2 md:hidden">
@@ -271,7 +173,7 @@ export default function Navbar() {
                 </div>
                 <SearchInput
                   id="navbar-search"
-                  placeholder="¿Qué estás buscando?"
+                  placeholder="Buscar en libros..."
                   onSearch={handleSearchComplete}
                   className="flex w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                 />

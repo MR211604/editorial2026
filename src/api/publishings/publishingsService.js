@@ -27,6 +27,29 @@ export const getPublishings = async (
   );
 };
 
+export const getBooks = async ({
+  page = 1,
+  limit = 9,
+  search = "",
+  categoryId = "",
+} = {}) => {
+  const params = new URLSearchParams({
+    publishing_type: "Libro",
+    state: 1,
+    page,
+    limit,
+  });
+
+  if (search) params.append("search", search);
+  if (categoryId) params.append("category", categoryId);
+
+  return handleApiCall(
+    async () => fetchWithoutToken(`api/publishings/getPublishings?${params}`),
+    "Error fetching books",
+    "Error obteniendo libros",
+  );
+};
+
 // PublishingURL es el slug único de cada publicación
 export const getPublishingByURL = async (publishingURL) => {
   return handleApiCall(

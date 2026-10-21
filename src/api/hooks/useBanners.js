@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLastActiveBanner } from "../banner/bannerService";
+import { getActiveBanner } from "../banner/bannerService";
 
-export const useGetLastActiveBanner = () => {
-  const { data: lastActiveBanner, isLastActiveBannerLoading } = useQuery({
-    queryKey: ["banner"],
-    queryFn: () => getLastActiveBanner(),
+export const useGetActiveBanner = () => {
+  const { data: activeBanner, isLoading: isActiveBannerLoading } = useQuery({
+    queryKey: ["activeBanner"],
+    queryFn: () => getActiveBanner(),
   });
 
   return {
-    lastActiveBanner,
-    isLastActiveBannerLoading,
+    activeBanner,
+    isActiveBannerLoading,
   };
 };

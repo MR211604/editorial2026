@@ -98,7 +98,7 @@ export default function BookDetailPage() {
               {book.publish_code && (
                 <div className="flex items-start">
                   <span className="font-semibold text-gray-700 w-32 flex-shrink-0">
-                    ISSN:
+                    ISBN:
                   </span>
                   <span className="text-gray-600">{book.publish_code}</span>
                 </div>
@@ -122,16 +122,12 @@ export default function BookDetailPage() {
               </div>
             )}
 
-            {/* Resource URL */}
-            {/* {magazine.resource_URL && ( */}
             <a
               // href={magazine.resource_URL}
-              href={
-                "https://www.udb.edu.sv/editorial_files/revistas/es/teoria_y_praxis/creditos.pdf"
-              }
+              href={book.resource_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-600 text-white px-6 mr-4 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center bg-red-600 text-white px-6 mr-4 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -146,33 +142,9 @@ export default function BookDetailPage() {
                   d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              Consejo editorial
+              Ver libro
             </a>
-
-            <a
-              href={
-                "https://www.udb.edu.sv/editorial_files/revistas/es/teoria_y_praxis/normas-para-presentacion-de-articulos.pdf"
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              Normas de publicación
-            </a>
-            {/* )} */}
+            
           </div>
         </div>
       </div>
