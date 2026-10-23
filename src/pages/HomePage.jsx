@@ -1,31 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useGetActiveBanner } from "../api/hooks/useBanners";
+import { useActiveDocuments } from "../api/hooks/useDocuments";
+import { useGetBooks } from "../api/hooks/usePublishings";
 import CustomBookSlider from "../components/ui/CustomBookSlider";
 import Loader from "../components/ui/Loader";
 import SearchInput from "../components/ui/SearchInput";
 import { getVideoEmbed } from "../helpers/banner";
+import { Link } from "react-router-dom";
 
 const carouselTexts = [
   "Crear espacios para la divulgación de los trabajos de investigación de la Academia universitaria, y apoyar al alcance de los estudiantes textos de lectura comprensibles que, a la altura de las exigencias de la vida universitaria, ofrezcan la posibilidad de seguir el desarrollo de las materias que brindan en las diversas carreras.",
-];
-
-const links = [
-  {
-    label: "Reglamento",
-    path: "https://www.udb.edu.sv/editorial/docspdf/reglamentos-de-la-editorial.pdf",
-  },
-  {
-    label: "Procedimientos de publicación",
-    path: "https://www.udb.edu.sv/editorial/docspdf/procedimiento-de-publicacion.pdf",
-  },
-  {
-    label: "Publicacion para revista",
-    path: "https://www.udb.edu.sv/editorial/docspdf/manual-de-postulacion.pdf",
-  },
-  {
-    label: "Consejo editorial",
-    path: "https://www.udb.edu.sv/editorial/docspdf/consejo_editorial_udb_2022.pdf",
-  },
 ];
 
 const videoContainerClasses = {
@@ -38,6 +22,15 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ytRef = useRef(null);
   const { activeBanner, isActiveBannerLoading } = useGetActiveBanner();
+  const {
+    documents,
+    isLoading: areDocumentsLoading,
+    error: documentsError,
+  } = useActiveDocuments();
+  const { books: latestBooks, isLoading: areLatestBooksLoading } = useGetBooks({
+    page: 1,
+    limit: 6,
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,12 +58,12 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       {/* Primera sección */}
-      <section className="flex flex-col md:flex-row items-center justify-center gap-10 mt-18 mb-18 max-w-6xl mx-auto">
+      <section className="mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-7xl flex-col items-center justify-center gap-8 px-5 py-14 sm:gap-12 sm:px-8 md:flex-row md:gap-14 md:px-10 md:py-16">
         <div className="w-full md:w-1/2 space-y-6 flex-1 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0c65af] mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0c65af] mb-4">
             El verdadero espacio de aprendizaje
           </h1>
-          <p className="text-xl text-black">
+          <p className="text-xl sm:text-2xl text-black">
             <strong>Bienvenido a la Editorial UDB</strong>
           </p>
 
@@ -101,7 +94,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <CustomBookSlider />
+        <CustomBookSlider
+          books={latestBooks?.data ?? []}
+          isLoading={areLatestBooksLoading}
+        />
       </section>
 
       {/* Segunda sección */}
@@ -172,21 +168,37 @@ export default function HomePage() {
         )}
       </div>
 
-      <section>
-        <div className="max-w-4xl mx-auto pt-20 text-center">
+      <section className="mx-auto pt-40">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-[#0c65af] mb-2">
             Detalles de publicación
           </h2>
         </div>
 
-        <nav className="grid justify-content-center grid-cols-2 gap-5 mx-20 mt-15">
-          {links.map(({ label, path }) => (
-            <a href={path}>
-              <div className="border-2 border-solid border-blue-500 transition-all duration-200 hover:scale-102 rounded-full text-sm md:text-md lg:text-lg cursor-pointer p-3 md:p-3 font-bold text-center text-blue-950 bg-transparent hover:bg-blue-50">
-                {label}
-              </div>
-            </a>
-          ))}
+        <nav className="grid justify-content-center grid-cols-1 md:grid-cols-2 gap-5 mx-20 mt-15">
+          {areDocumentsLoading ? (
+            <p className="col-span-2 text-center text-gray-600">
+              Cargando documentos...
+            </p>
+          ) : documentsError ? (
+            <p className="col-span-2 text-center text-gray-600">
+              No se pudieron cargar los documentos.
+            </p>
+          ) : !documents?.data?.length ? (
+            <p className="col-span-2 text-center text-gray-600">
+              No hay documentos disponibles.
+            </p>
+          ) : (
+            documents?.data?.map(({ idDocument, title, slug }) => (
+              <Link
+                key={idDocument}
+                to={`/documentos/${slug}`}
+                className="border-2 border-solid border-blue-500 transition-all duration-200 hover:scale-102 rounded-full text-sm md:text-md lg:text-lg cursor-pointer p-3 md:p-3 font-bold text-center text-blue-950 bg-transparent hover:bg-blue-50"
+              >
+                {title}
+              </Link>
+            ))
+          )}
         </nav>
       </section>
     </div>

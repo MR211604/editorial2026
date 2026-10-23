@@ -15,6 +15,7 @@ import TeoriaYPraxisAbout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisA
 import TeoriaYPraxisArchive from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisArchive";
 import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
 import SearchResultsPage from "./pages/SearchResultsPage";
+import DocumentPage from "./pages/DocumentPage";
 
 export default function AppRouter() {
   return (
@@ -27,6 +28,7 @@ export default function AppRouter() {
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/locations" element={<LocationsPage />} />
       <Route path="/ubicaciones" element={<LocationsPage />} />
+      <Route path="/documentos/:slug" element={<DocumentPage />} />
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
       <Route

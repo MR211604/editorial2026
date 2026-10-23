@@ -1,30 +1,37 @@
-import { getImagePath } from "../../helpers/imagePath";
+import { getPublishingImagePath } from "../../helpers/imagePath";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-const realImages = [
-  "img/Teologia en Abya Yala.png",
-  "img/Testigos de la fe.png",
-  "img/Sendas-feministas.jpg",
-  "img/Poemas.png",
-  "img/Remembranzas-de-mi-tierra.jpg",
-];
+export default function CustomBookSlider({ books = [], isLoading = false }) {
+  if (isLoading) {
+    return (
+      <div
+        className="flex-1 w-full max-w-lg min-h-56 flex items-center justify-center"
+        aria-label="Cargando libros recientes"
+      >
+        <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin" />
+      </div>
+    );
+  }
 
-const carouselImages =
-  realImages.length < 6 ? [...realImages, ...realImages] : realImages;
+  if (books.length === 0) return null;
 
-export default function CustomBookSlider() {
+  const loopEnabled = books.length >= 4;
+  const loopAdditionalSlides = Math.min(2, Math.max(0, books.length - 4));
+
   return (
-    <div className="flex-1 max-w-lg relative">
+    <div className="flex-1 w-full max-w-lg relative">
       <Swiper
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={3}
-        loop={true}
+        slidesPerGroup={1}
+        loop={loopEnabled}
+        loopAdditionalSlides={loopAdditionalSlides}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -39,13 +46,21 @@ export default function CustomBookSlider() {
         }}
         className="superpuestoSwiper"
       >
-        {carouselImages.map((src, idx) => (
-          <SwiperSlide key={idx}>
-            <img
-              src={getImagePath(src)}
-              alt={`Libro ${idx + 1}`}
-              className="rounded-lg shadow-lg object-cover w-42 h-56 transition-all duration-300"
-            />
+        {books.map((book) => (
+          <SwiperSlide key={book.idPublishing}>
+            {book.cover ? (
+              <img
+                src={getPublishingImagePath(book)}
+                alt={`Portada de ${book.title}`}
+                className="rounded-lg shadow-lg object-cover w-42 h-56 sm:w-44 sm:h-60 transition-all duration-300"
+              />
+            ) : (
+              <div
+                role="img"
+                aria-label={`Portada no disponible para ${book.title}`}
+                className="rounded-lg shadow-lg bg-gradient-to-br from-blue-400 to-blue-700 w-42 h-56 sm:w-44 sm:h-60"
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
