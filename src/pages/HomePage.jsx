@@ -28,6 +28,12 @@ const links = [
   },
 ];
 
+const videoContainerClasses = {
+  tiktok: "aspect-[9/16] max-w-[380px]",
+  instagram: "aspect-[9/16] max-w-[380px]",
+  facebook: "aspect-[9/16] max-w-[380px]",
+};
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const ytRef = useRef(null);
@@ -149,11 +155,8 @@ export default function HomePage() {
           ) : videoEmbed ? (
             <div
               className={`mx-auto overflow-hidden ${
-                videoEmbed.provider === "tiktok"
-                  ? "aspect-[9/16] max-w-[380px]"
-                  : videoEmbed.provider === "instagram"
-                    ? "h-[650px] max-w-[540px]"
-                    : "aspect-video max-w-[800px]"
+                videoContainerClasses[videoEmbed.provider] ??
+                "aspect-video max-w-[800px]"
               }`}
             >
               <iframe
