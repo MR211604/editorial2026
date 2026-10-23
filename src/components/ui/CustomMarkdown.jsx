@@ -1,6 +1,7 @@
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import { getMdxImagePath } from "../../helpers/imagePath";
 
 export function CustomMarkdown({ content, components }) {
   const customComponents = {
@@ -76,7 +77,7 @@ export function CustomMarkdown({ content, components }) {
     ),
     img: ({ src, alt, title, ...props }) => (
       <img
-        src={src}
+        src={getMdxImagePath(src)}
         alt={alt}
         title={title}
         className="max-w-full h-auto inline-block"

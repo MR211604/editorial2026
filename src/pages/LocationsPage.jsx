@@ -1,4 +1,4 @@
-import { getImagePath } from "../helpers/imagePath";
+import { getLocationImagePath } from "../helpers/imagePath";
 import { useActiveLocations } from "../api/hooks/useLocations";
 
 function getMapsUrl(query) {
@@ -7,9 +7,6 @@ function getMapsUrl(query) {
 
 export default function LocationsPage() {
   const { locations, isLoading, error } = useActiveLocations();
-
-  const getLocationImage = (image) =>
-    /^https?:\/\//i.test(image) ? image : getImagePath(image);
 
   return (
     <main className="p-4 mt-16 mb-16">
@@ -37,7 +34,7 @@ export default function LocationsPage() {
               >
                 <div className="flex h-52 items-center justify-center bg-slate-800 p-8">
                   <img
-                    src={getLocationImage(image)}
+                    src={getLocationImagePath(image)}
                     alt={`Logo de ${name}`}
                     className="max-h-full max-w-full object-contain"
                   />
