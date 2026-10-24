@@ -29,7 +29,7 @@ export default function HomePage() {
   } = useActiveDocuments();
   const { books: latestBooks, isLoading: areLatestBooksLoading } = useGetBooks({
     page: 1,
-    limit: 6,
+    limit: 5,
   });
 
   useEffect(() => {

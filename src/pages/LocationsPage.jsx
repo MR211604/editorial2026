@@ -32,7 +32,7 @@ export default function LocationsPage() {
                 key={idLocation}
                 className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="flex h-52 items-center justify-center bg-slate-800 p-8">
+                <div className="flex h-52 items-center justify-center bg-linear-to-r from-[#0a226b] to-[#002e88] p-8">
                   <img
                     src={getLocationImagePath(image)}
                     alt={`Logo de ${name}`}
