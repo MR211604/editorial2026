@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { env } from "../../cms-udb-frontend/src/config/env";
+import { env } from "./config/env";
 
 const queryClient = new QueryClient();
 const basename = env.BASE_URL;
@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );

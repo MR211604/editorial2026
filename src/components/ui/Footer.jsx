@@ -24,7 +24,7 @@ export default function Footer() {
           <ul className="list-none text-cyan-100 mt-1">
             <li>
               <Link
-                to="https://www.revistas.udb.edu.sv/
+                to="https://www.revistas.udb.edu.sv/"
                 className="hover:underline hover:text-cyan-50 transition"
               >
                 Revistas
