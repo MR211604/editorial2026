@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useGetPublishingByURL } from "../../api/hooks/usePublishings";
 import Loader from "../../components/ui/Loader";
 import { getPublishingImagePath } from "../../helpers/imagePath";
@@ -10,6 +10,10 @@ export default function BookDetailPage() {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!book) {
+    return <Navigate to="/" replace />;
   }
 
   return (

@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 /* Páginas generales */
 import BooksPage from "./pages/BooksPage";
 import BookDetailPage from "./pages/books/BookDetailPage";
 import ContactPage from "./pages/ContactPage";
+import DocumentPage from "./pages/DocumentPage";
 import GalleryPage from "./pages/GalleryPage";
 import HomePage from "./pages/HomePage";
 import LocationsPage from "./pages/LocationsPage";
@@ -15,7 +16,6 @@ import TeoriaYPraxisAbout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisA
 import TeoriaYPraxisArchive from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisArchive";
 import TeoriaYPraxisLayout from "./pages/magazines/teoria-y-praxis/TeoriaYPraxisLayout";
 import SearchResultsPage from "./pages/SearchResultsPage";
-import DocumentPage from "./pages/DocumentPage";
 
 export default function AppRouter() {
   return (
@@ -29,38 +29,41 @@ export default function AppRouter() {
       <Route path="/locations" element={<LocationsPage />} />
       <Route path="/ubicaciones" element={<LocationsPage />} />
       <Route path="/documentos/:slug" element={<DocumentPage />} />
+      <Route path="/libros/:bookURL" element={<BookDetailPage />} />
 
       {/* ——— Teoría y Praxis (layout + rutas anidadas) ——— */}
-      <Route
+      {/* <Route
         path="/revistas/teoria_y_praxis"
         element={<TeoriaYPraxisLayout headerTitle={"Teoría y práxis"} />}
       >
         <Route index element={<TeoriaYPraxisArchive />} />
         <Route path="about" element={<TeoriaYPraxisAbout />} />
         <Route path="archive" element={<TeoriaYPraxisArchive />} />
-        {/* <Route path="editorial-policy" element={<TP_EditorialPolicy />} /> */}
-        {/* <Route path="acceptance-process" element={<TP_AcceptanceProcess />} /> */}
-        {/* <Route
+        <Route path="editorial-policy" element={<TP_EditorialPolicy />} /> 
+        <Route path="acceptance-process" element={<TP_AcceptanceProcess />} /> 
+        <Route
           path="publication-standards"
           element={<TP_PublicationStandards />}
-        /> */}
-        {/* <Route path="editorial-board" element={<TP_EditorialBoard />} /> */}
-      </Route>
+        /> 
+        <Route path="editorial-board" element={<TP_EditorialBoard />} /> 
+      </Route>*/}
 
       {/* ——— Dialogos (layout + rutas anidadas) ——— */}
-      <Route
+      {/* <Route
         path="/revistas/dialogos"
         element={<DialogosLayout headerTitle={"Diá-logos"} />}
       >
         <Route index element={<DialogosArchive />} />
         <Route path="archive" element={<DialogosArchive />} />
-      </Route>
+      </Route>*/}
 
       {/* ——— Página de detalle de revista individual ——— */}
-      <Route path="/revistas/:magazineURL" element={<MagazineDetailPage />} />
+      {/* <Route path="/revistas/:magazineURL" element={<MagazineDetailPage />} />*/}
 
       {/* Página de detalle de libro individual */}
-      <Route path="/libros/:bookURL" element={<BookDetailPage />} />
+
+      {/* Cualquier ruta no reconocida vuelve al inicio. */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
