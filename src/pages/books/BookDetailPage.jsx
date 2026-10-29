@@ -16,6 +16,8 @@ export default function BookDetailPage() {
     return <Navigate to="/" replace />;
   }
 
+  const resourceURL = book.resource_URL?.trim();
+
   return (
     <main className="max-w-screen-xl mx-auto p-6 mt-8">
       {/* Main Content */}
@@ -126,9 +128,9 @@ export default function BookDetailPage() {
               </div>
             )}
 
-            <a
-              // href={magazine.resource_URL}
-              href={book.resource_URL}
+            {resourceURL && resourceURL !== "-" && (
+              <a
+              href={resourceURL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-red-600 text-white px-6 mr-4 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
@@ -148,6 +150,7 @@ export default function BookDetailPage() {
               </svg>
               Ver libro
             </a>
+            )}
             
           </div>
         </div>
