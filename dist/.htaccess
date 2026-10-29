@@ -1,0 +1,23 @@
+# .htaccess para SPA React en Apache
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # La base debe coincidir con el base path configurado en vite.config.js
+    RewriteBase /editorial2026/
+    
+    # Si el archivo o directorio existe, sirve el archivo directamente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Si no existe, redirige a index.html (para que React Router maneje la ruta)
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Compresión GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
