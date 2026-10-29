@@ -116,10 +116,8 @@ export default function SearchResultsPage() {
                       {libro.title}
                     </h3>
                     {libro.URL && (
-                      <a
-                        href={`${env.BASE_URL}libros/${libro.URL}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to={`/libros/${libro.URL}`}
                         className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium"
                       >
                         Ver recurso
@@ -136,7 +134,7 @@ export default function SearchResultsPage() {
                             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     )}
                   </div>
                 ))}
